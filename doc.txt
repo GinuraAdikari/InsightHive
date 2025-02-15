@@ -1,0 +1,3 @@
+To start the api, run the following command
+
+uvicorn api:app --reload
