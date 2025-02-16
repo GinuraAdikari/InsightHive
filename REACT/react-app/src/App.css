@@ -1,0 +1,110 @@
+/* Global Styles */
+body {
+  background: #000000;
+  color: #f1f1f1;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+
+  overflow-x: hidden; /* Prevents horizontal scroll */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Ensures the content is centered */
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: #121212;
+  border-bottom: 2px solid #292929;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+.nav-links{
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #cfcfcf;
+  text-decoration: none;
+  margin-left: 25px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+/* Main Section */
+.main-content {
+  margin-top: 40px;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #e0e0e0;
+  margin-bottom: 30px;
+}
+
+/* Components Grid */
+.components-grid {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  align-items: stretch;
+  max-width: 90vw; /* Ensures the grid stays within the viewport */
+}
+
+/* Component Box Styling */
+.component-box {
+  padding: 25px;
+  width: 250px;
+  text-align: center;
+  border-radius: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid #3a3a3a;
+  background: #181818;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  color: #f5f5f5;
+  box-shadow: 0px 5px 10px rgba(255, 255, 255, 0.05);
+}
+
+/* Individual Box Colors */
+.customer { border-top: 4px solid #ffcc00; }
+.sentiment { border-top: 4px solid #4aa8ff; }
+.engagement { border-top: 4px solid #2ecc71; }
+.recommendation { border-top: 4px solid #f39c12; }
+
+/* Hover Effect */
+.component-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Icons */
+.icon {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
