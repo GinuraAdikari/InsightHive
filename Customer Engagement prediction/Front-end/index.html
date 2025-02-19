@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Input</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Customer Engagement Prediction</h2>
+        
+        <label for="campaign">Campaign:</label>
+        <input type="number" id="campaign" value="1500">
+        
+        <label for="platform">Platform:</label>
+        <select id="platform">
+            <option value="0">DV360</option>
+            <option value="1">FaceBook Ads</option>
+            <option value="2">Google Ads</option>
+        </select>
+        
+        <label for="channel">Channel:</label>
+        <select id="channel">
+            <option value="0">Dsiplay</option>
+            <option value="1">Mobile</option>
+            <option value="2">Search</option>
+            <option value="3">Social</option>
+        </select>
+        
+        <label for="creative">Creative ID:</label>
+        <input type="number" id="creative" value="1500">
+
+        <label for="creative">Creative Dimension:</label>
+        <select id="creative">
+            <option value="0">1500</option>
+            <option value="1">0</option>
+        </select>
+        
+        <label for="template">Template:</label>
+        <input type="number" id="template" value="0">
+        
+        <label for="network">Network:</label>
+        <input type="number" id="network" value="180">
+        
+        <label for="keywords">Keywords:</label>
+        <textarea id="keywords" placeholder="Enter comma-separated values"></textarea>
+        
+        <label for="advertiser">Advertiser:</label>
+        <textarea id="advertiser" placeholder="Enter comma-separated values"></textarea>
+        
+        <button onclick="submitData()">Submit</button>
+        
+        <h3>Prediction Result:</h3>
+        <p id="result">Waiting for input...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
