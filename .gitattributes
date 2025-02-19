@@ -1,1 +1,27 @@
 Customer[[:space:]]Engagement[[:space:]]prediction/Datasets/processed_data.csv filter=lfs diff=lfs merge=lfs -text
+# Node.js / npm
+node_modules/
+
+# Build output
+build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS-specific files
+.DS_Store  # macOS
+Thumbs.db  # Windows
+
+# IDE / Editor files
+.idea/
+.vscode/
+
+# Dependency directory
+npm-debug.log*
+
+# Environment variables
+.env
+
+
