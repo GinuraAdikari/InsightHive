@@ -1,0 +1,84 @@
+/* Center the login box on the page */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background-image: url('../assets/background.jpg'); /* Add background image if needed */
+    background-size: cover;
+    background-position: center;
+}
+
+.login-container {
+    padding: 50px 40px;
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 14px;
+    max-width: 400px;
+    width: 100%;
+    height: 350px; /* Increased height */
+    position: relative; /* Required for positioning the close button */
+}
+
+.close-button-Login {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.2); /* Background color for the box */
+    border: none;
+    color: white;
+    font-size: 3rem;
+    cursor: pointer;
+    width: 2.5rem; /* Width of the background box */
+    height: 2.5rem; /* Height of the background box */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25%; /* Make the box circular */
+    transition: background 0.3s ease, color 0.3s ease; /* Smooth transitions */
+}
+
+.close-button-Login:hover {
+    background: deepskyblue; /* Change background color on hover */
+    color: #fff; /* Change text color on hover */
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    background: skyblue;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-top: 15px;
+}
+
+.login-form button:hover {
+    background: deepskyblue;
+}
+
+.register-link {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.register-link a {
+    color: skyblue; /* Link color */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: deepskyblue; /* Change color on hover */
+}
