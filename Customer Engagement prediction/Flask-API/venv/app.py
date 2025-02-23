@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify
 import torch
 from model import HeteroGCN  # Import your trained model
+# from embedding_util import get_phrase_embedding  # Import your embedding function
+
 
 app = Flask(__name__)
 
@@ -32,6 +34,15 @@ edge_index_dict = {
 def home():
     return jsonify({"message": "Customer Engagement Prediction API is running!"})
 
+@app.route('/test-predict', methods=['POST'])
+def test_predict():
+    data = request.get_json()  # Get the JSON data from the frontend
+    print("Received data:", data)  # Log the received data for debugging
+
+    # You can return a confirmation that the data is received correctly
+    return jsonify({"status": "success", "received_data": data})
+
+
 @app.route("/predict", methods=["POST"])
 def predict():
     if request.method == "GET":
@@ -58,6 +69,19 @@ def predict():
         return jsonify({"prediction": output.tolist()})
     except Exception as e:
         return jsonify({"error": str(e)}), 400
+    
+@app.route('/get-embedding', methods=['POST'])
+def get_embedding():
+    data = request.json
+    phrase = data.get('phrase', '')
+    
+    if not phrase:
+        return jsonify({"error": "No phrase provided"}), 400
+    
+    # embedding = get_phrase_embedding(phrase)
+    
+    # You can return the embedding as a list or numpy array converted to a list
+    # return jsonify({"embedding": embedding.tolist()}), 200
 
 if __name__ == "__main__":
     app.run(debug=True)
