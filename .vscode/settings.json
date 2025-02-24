@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./Customer Engagement prediction/prediction-app/utils/test_",
+        "./Customer Engagement prediction/prediction-app/utils/test_"
+    ]
+}
