@@ -32,7 +32,9 @@ const App = () => {
 
   });
 
+  const [successMessage, setSuccessMessage] = useState("");
   const [receivedData, setReceivedData] = useState(null);
+  
 
   const handleSelectChange = (e) => {
     const { id, value } = e.target;
@@ -60,15 +62,26 @@ const App = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),  // Send form data as JSON
+        body: JSON.stringify(formData),
       });
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const data = await response.json();
-      setReceivedData(data);  // Update the state with the received data from backend
+      console.log("Data sent successfully:", data);
+
+      setSuccessMessage("Data sent successfully! Embeddings generated.");
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error('Error sending data:', error);
+      setSuccessMessage("Failed to send data. Please try again.");
     }
   };
+
+
+
+
 
   return (
     <div className="main-container">
@@ -86,6 +99,7 @@ const App = () => {
           <NumberOfDaysInput formData={formData} handleInputChange={handleInputChange} />
         </div>
         <button onClick={submitForm}>Send Data to Backend</button>
+        {successMessage && <p>{successMessage}</p>}
       </div>
 
       <div className="output-container">
