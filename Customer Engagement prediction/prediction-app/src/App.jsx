@@ -2,39 +2,31 @@ import React, { useState } from "react";
 import PlatformSelection from "./components/PlatformSelection";
 import ChannelSelection from "./components/ChannelSelection";
 import CreativeSelection from "./components/CreativeSelection";
-import TemplateSelection from "./components/TemplateSelection";
 import KeywordsInput from "./components/keywordsInput";
 import AdvertiserInput from "./components/AdvertiserInput";
 import NumberOfDaysInput from "./components/NumberOfDaysInput";
 import CampaignInputs from "./components/CampaignInput";
-import NetworkSelection from "./components/NetworkInput";
 import "./App.css";
 
 const optionsConfig = {
   platform: ["DV360", "Facebook Ads", "Google Ads"],
   channel: ["Display", "Mobile", "Search", "Social"],
-  creative: ["1500", "0"],
-  template: ["90", "23", "92", "89", "93"],
-  network: ["190", "287", "191", "188", "353", "350"]
+  creative: ["Yes", "No"],
 };
 
 const App = () => {
   const [formData, setFormData] = useState({
     platform: [0, 0, 0],
     channel: [0, 0, 0, 0],
-    creative: [0, 0],
-    template: [0, 0, 0, 0, 0],
-    network: [0, 0, 0, 0, 0, 0],
+    creative: [0], // Updated to a single value
     keywords: "",
     advertiser: "",
     numberOfDays: "",
     campaignId: "",
-
   });
 
   const [successMessage, setSuccessMessage] = useState("");
   const [receivedData, setReceivedData] = useState(null);
-  
 
   const handleSelectChange = (e) => {
     const { id, value } = e.target;
@@ -79,21 +71,15 @@ const App = () => {
     }
   };
 
-
-
-
-
   return (
     <div className="main-container">
       <div className="form-container">
         <h2>Customer Engagement Prediction</h2>
         <div className="form-grid">
+          <CampaignInputs formData={formData} handleInputChange={handleInputChange} />
           <PlatformSelection formData={formData} handleSelectChange={handleSelectChange} />
           <ChannelSelection formData={formData} handleSelectChange={handleSelectChange} />
           <CreativeSelection formData={formData} handleSelectChange={handleSelectChange} />
-          <TemplateSelection formData={formData} handleSelectChange={handleSelectChange} />
-          <NetworkSelection formData={formData} handleSelectChange={handleSelectChange} />
-          <CampaignInputs formData={formData} handleInputChange={handleInputChange} />
           <KeywordsInput formData={formData} handleInputChange={handleInputChange} />
           <AdvertiserInput formData={formData} handleInputChange={handleInputChange} />
           <NumberOfDaysInput formData={formData} handleInputChange={handleInputChange} />
