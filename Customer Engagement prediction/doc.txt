@@ -18,21 +18,16 @@ npm start
 campaign_item_id : unique id of each adevertising campaign
 no_of_days : number of days campaign has been running
 time : timestamp on which the data was captured
-ext_service_id : id of each advertising platforms used
 ext_service_name : name of each advertising platforms used
 creative_id : id of the creative images used for ads
 creative_height : height of the creative image for the ad in pixels
 creative_width : width of the creative image for the ad in pixels
 search_tags : search tags used for displaying ads
 template_id : template used in the creative image
-landing_page : landing page url on which users clicked or browsed through
-advertiser_id : id of the advertiser
 advertiser_name : name of the place of the advertiser ( city , country , state )
 network_id : id of the each agency
 advertiser_currency : currency of the country in which the advertiser operates in
-channel_id : id of each channel used for placed ads
 channel_name : name of the channel ( display , search , social , mobile video )
-max_bid_cpm : maximum value of bid for optimizing cpm
 campaign_budget_usd : overall budget of the campaign or the amount of money that the campaign can spend
 impressions : the number of times an advertisement is displayed on a website or social media platform.
 clicks : the number of times an advertisement is clicked on by a user, leading them to the advertiser's website or landing page.
