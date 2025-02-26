@@ -64,8 +64,8 @@ h2, h3 {
 /* Form Input Grid */
 .form-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1fr;
+  gap: 5px;
   animation: fadeIn 1.5s ease-out;
 }
 
@@ -124,6 +124,17 @@ pre {
   max-height: 70vh;
   color: #334155;
   animation: fadeIn 1.5s ease-out;
+}
+
+/* Creative Selection (Separate CSS for side-by-side display) */
+.creative-selection {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+
+.creative-selection label {
+  margin: 0;
 }
 
 /* Keyframe Animations */
