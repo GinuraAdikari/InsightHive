@@ -23,7 +23,7 @@ body {
 .main-container {
   display: flex;
   gap: 30px;
-  width: 90%;
+  width: 120%;
   max-width: 1400px;
   padding: 20px;
   border-radius: 10px;
@@ -127,15 +127,32 @@ pre {
 }
 
 /* Creative Selection (Separate CSS for side-by-side display) */
-.creative-selection {
+/* Creative Selection Container */
+.creative-selection-container {
   display: flex;
-  justify-content: space-evenly;
-  gap: 20px;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.creative-selection label {
-  margin: 0;
+.creative-label {
+  min-width: 100px; /* Ensure label has a fixed width */
+  font-weight: bold;
+  color: #334155;
 }
+
+.creative-options {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.creative-options label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
 
 /* Keyframe Animations */
 @keyframes fadeIn {
