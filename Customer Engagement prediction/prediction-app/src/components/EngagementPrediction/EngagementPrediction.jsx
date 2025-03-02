@@ -5,10 +5,8 @@ const EngagementPrediction = () => {
   const [formData, setFormData] = useState({
     platform: "",
     channel: "",
-    campaignObjective: "",
     keywords: "",
     searchTags: "",
-    budget: "",
     duration: "",
     isAvailable: false,
   });
@@ -29,7 +27,7 @@ const EngagementPrediction = () => {
     e.preventDefault();
 
     // Validation check for all required fields
-    if (!formData.platform || !formData.channel || !formData.campaignObjective || !formData.keywords || !formData.searchTags || !formData.budget || !formData.duration) {
+    if (!formData.platform || !formData.channel || !formData.keywords || !formData.searchTags || !formData.duration) {
       setErrorMessage("Please fill all the fields.");
       return;  // Exit if validation fails
     }
@@ -42,10 +40,8 @@ const EngagementPrediction = () => {
     const outputData = {
       platform: getOneHotEncoded(formData.platform, ["DV360", "Facebook Ads", "Google Ads"]),
       channel: getOneHotEncoded(formData.channel, ["Mobile", "Search", "Social", "Video"]),
-      campaignObjective: getOneHotEncoded(formData.campaignObjective, ["Brand Awareness", "Lead Generation", "Conversions"]),
       keywords: formData.keywords.split(",").map((kw) => kw.trim()),
       searchTags: formData.searchTags.split(",").map((tag) => tag.trim()),
-      budget: [Number(formData.budget)],
       duration: [Number(formData.duration)],
       hasimage: [formData.isAvailable ? 1 : 0],
     };
@@ -106,16 +102,6 @@ const EngagementPrediction = () => {
           </label>
 
           <label>
-            Campaign Objective:
-            <select name="campaignObjective" value={formData.campaignObjective} onChange={handleChange} className="animated-input">
-              <option value="">Select objective</option>
-              <option value="Brand Awareness">Brand Awareness</option>
-              <option value="Lead Generation">Lead Generation</option>
-              <option value="Conversions">Conversions</option>
-            </select>
-          </label>
-
-          <label>
             Keywords:
             <textarea
               name="keywords"
@@ -133,18 +119,6 @@ const EngagementPrediction = () => {
               value={formData.searchTags}
               onChange={handleChange}
               placeholder="Enter search tags separated by commas"
-              className="animated-input"
-            />
-          </label>
-
-          <label>
-            Budget (USD):
-            <input
-              type="number"
-              name="budget"
-              value={formData.budget}
-              onChange={handleChange}
-              placeholder="Enter your budget"
               className="animated-input"
             />
           </label>
