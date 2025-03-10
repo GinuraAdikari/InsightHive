@@ -6,7 +6,8 @@ const EngagementPrediction = () => {
     platform: "",
     channel: "",
     keywords: "",
-    searchTags: "",
+    advertiser: "",
+    search_tags: "",
     duration: "",
     isAvailable: false,
   });
@@ -27,7 +28,7 @@ const EngagementPrediction = () => {
     e.preventDefault();
 
     // Validation check for all required fields
-    if (!formData.platform || !formData.channel || !formData.keywords || !formData.searchTags || !formData.duration) {
+    if (!formData.platform || !formData.channel || !formData.advertiser || !formData.keywords || !formData.search_tags || !formData.duration) {
       setErrorMessage("Please fill all the fields.");
       return;  // Exit if validation fails
     }
@@ -39,11 +40,12 @@ const EngagementPrediction = () => {
 
     const outputData = {
       platform: getOneHotEncoded(formData.platform, ["DV360", "Facebook Ads", "Google Ads"]),
-      channel: getOneHotEncoded(formData.channel, ["Mobile", "Search", "Social", "Video"]),
+      channel: getOneHotEncoded(formData.channel, ["Mobile", "Search", "Social", "Video", "Display"]),
+      advertiser: formData.advertiser.split(",").map((ad) => ad.trim()),
       keywords: formData.keywords.split(",").map((kw) => kw.trim()),
-      searchTags: formData.searchTags.split(",").map((tag) => tag.trim()),
+      search_tags: formData.search_tags.split(",").map((tag) => tag.trim()),
       duration: [Number(formData.duration)],
-      hasimage: [formData.isAvailable ? 1 : 0],
+      creative: [formData.isAvailable ? 1 : 0],
     };
 
     console.log("Form Output:", outputData);
@@ -61,8 +63,8 @@ const EngagementPrediction = () => {
       
       if (response.ok) {
         const data = await response.json();
-        setResponseMessage(`Response Message: ${data.message}`);  // Displaying the message returned from Flask
-        setOutput(data.receivedData);  // Display the data received from the API
+        setResponseMessage(`Prediction: ${data.prediction[0]}`); // Displaying the message returned from Flask
+        setOutput(data.prediction[0]);  // Display the data received from the API
       } else {
         setResponseMessage("Error in API call");
       }
@@ -98,7 +100,19 @@ const EngagementPrediction = () => {
               <option value="Search">Search</option>
               <option value="Social">Social</option>
               <option value="Video">Video</option>
+              <option value="Display">Display</option>
             </select>
+          </label>
+
+          <label>
+            Advertiser:
+            <textarea
+              name="advertiser"
+              value={formData.advertiser}
+              onChange={handleChange}
+              placeholder="Enter advertiser"
+              className="animated-input"
+            />
           </label>
 
           <label>
@@ -115,8 +129,8 @@ const EngagementPrediction = () => {
           <label>
             Search Tags:
             <textarea
-              name="searchTags"
-              value={formData.searchTags}
+              name="search_tags"
+              value={formData.search_tags}
               onChange={handleChange}
               placeholder="Enter search tags separated by commas"
               className="animated-input"
@@ -162,9 +176,9 @@ const EngagementPrediction = () => {
             <p className="placeholder-text">Output will be displayed here upon submission.</p>
           )}
 
-          {output && (
+          {/* {output && (
             <pre className="output-content">{JSON.stringify(output, null, 2)}</pre>  // Display the received data
-          )}
+          )} */}
         </div>
       </div>
     </div>
