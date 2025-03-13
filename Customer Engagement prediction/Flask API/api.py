@@ -1,11 +1,17 @@
 from flask import Flask, jsonify, request
 import torch
 from model import HeteroGCN  # Import your trained model
+from pymongo import MongoClient
 from flask_cors import CORS
 import numpy as np
 
 app = Flask(__name__)
 CORS(app)
+
+# Connect to MongoDB
+client = MongoClient("mongodb://localhost:27017/")  # Change if hosted elsewhere
+db = client["Customer_engagement"]  # Database name
+collection = db["prediction_table"]  # Collection name
 
 # Initialize the model
 model = HeteroGCN(hidden_dim=32)
@@ -31,7 +37,9 @@ edge_index_dict = {
     ("campaign", "managed_by", "network"): torch.tensor([[0, 0], [0, 0]], dtype=torch.long),  
     ("campaign", "belongs_to", "advertiser"): torch.tensor([[0, 0], [0, 0]], dtype=torch.long),  
     ("campaign", "targeted_with", "search_tag"): torch.tensor([[0, 0], [0, 0]], dtype=torch.long),  
-    ("search_tag", "rev_targeted_with", "campaign"): torch.tensor([[0, 0], [0, 0]], dtype=torch.long)  
+    ("search_tag", "rev_targeted_with", "campaign"): torch.tensor([[0, 0], [0, 0]], dtype=torch.long),
+    ("campaign", "targeted_in", "region"): torch.tensor([[0, 0], [0, 0]], dtype=torch.long),  
+    ("campaign", "uses", "currency"): torch.tensor([[0, 0], [0, 0]], dtype=torch.long)  
 }
 
 # Load pre-trained GloVe embeddings
@@ -61,6 +69,33 @@ def get_text_embedding(text_list, embeddings_index, embedding_dim=50):
 # Load GloVe embeddings
 embeddings_index = load_glove_embeddings()
 
+# Define a reverse mapping for region one-hot encoding
+region_reverse_mapping = {
+    (1, 0, 0, 0, 0, 0, 0): "Asia/Kolkata",
+    (0, 1, 0, 0, 0, 0, 0): "Africa/Cairo",
+    (0, 0, 1, 0, 0, 0, 0): "Asia/Calcutta",
+    (0, 0, 0, 1, 0, 0, 0): "America/New_York",
+    (0, 0, 0, 0, 1, 0, 0): "Asia/Singapore",
+    (0, 0, 0, 0, 0, 1, 0): "US/Eastern",
+    (0, 0, 0, 0, 0, 0, 1): "Asia/Muscat"
+}
+
+def get_currency_one_hot(region):
+    """Maps region (timezone) to a one-hot encoded currency vector."""
+    currency_mapping = {
+        "Asia/Kolkata": [1, 0, 0, 0, 0],  # AED
+        "Asia/Calcutta": [1, 0, 0, 0, 0],  # AED
+        "Africa/Cairo": [0, 1, 0, 0, 0],   # EGP
+        "Asia/Singapore": [0, 0, 1, 0, 0], # SGD
+        "America/New_York": [0, 0, 0, 1, 0],  # USD
+        "US/Eastern": [0, 0, 0, 1, 0],     # USD
+        "Asia/Muscat": [0, 0, 0, 1, 0],    # USD
+        "Asia/Dubai": [0, 0, 0, 1, 0],     # USD
+    }
+    return torch.tensor(currency_mapping.get(region, [0, 0, 0, 0, 1]), dtype=torch.float)  
+    # Default to [0, 0, 0, 0, 1] if region not found
+
+
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -72,18 +107,28 @@ def predict():
         search_tag_emb = get_text_embedding(data.get("searchTags", []), embeddings_index)
         advertiser_emb = get_text_embedding(data.get("advertiser", []), embeddings_index)
 
-        duration = data["duration"]  # Duration data comes from the frontend
+        duration = data["duration"]
+        budget = data["budget"]
+
+        region_one_hot = tuple(data.get("region", [0, 0, 0, 0, 0, 0, 1]))  # Convert list to tuple for lookup
+
+        # Get region name from the one-hot encoding
+        region_name = region_reverse_mapping.get(region_one_hot, "Unknown")
+
+        # Get currency one-hot encoding based on region name
+        currency_code = get_currency_one_hot(region_name)
 
         # Manually setting these values since they aren't coming from frontend
         campaign = [158] 
-        network_id = 290 
-        template_id = 190 
+        network_id = 353 
+        template_id = 90 
+
         # Combine campaign and duration into a single tensor
-        campaign_with_duration = torch.tensor(campaign + duration, dtype=torch.float)
+        campaign_with_duration = torch.tensor(campaign + duration + budget, dtype=torch.float)
         
         # Convert all inputs to tensors
         test_input = {
-            "campaign": campaign_with_duration,  # Now both campaign and duration are together
+            "campaign": campaign_with_duration,
             "network": torch.tensor([network_id], dtype=torch.float),
             "template": torch.tensor([template_id], dtype=torch.float),
             "platform": torch.tensor(data["platform"], dtype=torch.float),
@@ -92,23 +137,59 @@ def predict():
             "advertiser": torch.tensor(advertiser_emb, dtype=torch.float),
             "search_tag": torch.tensor(search_tag_emb, dtype=torch.float),
             "creative": torch.tensor(data["creative"], dtype=torch.float),
+            "region": torch.tensor(data["region"], dtype=torch.float),  # Keep original region one-hot
+            "currency": currency_code,  # Use the mapped currency one-hot
+
         }
 
         # Convert all tensors to 2D by adding an extra dimension
         input_data = {key: tensor.unsqueeze(0) if tensor.dim() == 1 else tensor for key, tensor in test_input.items()}
 
-        print("Test Input:", input_data)
-
         # Get model prediction
         with torch.no_grad():
             output = model(input_data, edge_index_dict)
 
-        response = {"prediction": output.tolist()}
+        # Debugging: Check output shape
+        print("Output shape:", output.shape)
+        print("Output tensor:", output)
+        # Convert output to percentage
+        percentage_output = round(output.squeeze().item() * 100, 2)
+
+        # Format response
+        response = {"prediction": f"{percentage_output} % engagement"}
+        print(response)
         return jsonify(response)
+
+    
     except Exception as e:
         print("Error:", str(e))
         return jsonify({"error": str(e)}), 400
     
+
+# Fetch engagement trends for a campaign
+@app.route("/campaign_trend", methods=["GET"])
+def campaign_trend():
+    try:
+        campaign_id = request.args.get("campaign_id")  # Get campaign ID from request
+        if not campaign_id:
+            return jsonify({"error": "Campaign ID is required"}), 400
+
+        # Query MongoDB for all records of the campaign
+        campaign_data = list(collection.find({"campaign_index": int(campaign_id)}))
+
+        if not campaign_data:
+            return jsonify({"error": "No data found"}), 404
+
+        # Prepare data for visualization
+        trend_data = [
+            {"campaign_index": item["campaign_index"], "engagement_score": item["engagement_score"]}
+            for item in campaign_data
+        ]
+
+        return jsonify(trend_data)
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)

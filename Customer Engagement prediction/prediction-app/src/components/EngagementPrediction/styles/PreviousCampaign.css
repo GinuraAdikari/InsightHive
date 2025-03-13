@@ -1,0 +1,18 @@
+.previous-campaign-container {
+    width: 100%; /* Takes full screen width */
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .previous-campaign-info p {
+    font-size: 14px;
+    line-height: 1.5;
+  } 
+  
+  .previous-campaign-info p strong {
+    font-weight: bold;
+  }
+  
