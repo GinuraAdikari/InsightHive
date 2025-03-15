@@ -105,6 +105,9 @@ const EngagementPrediction = () => {
       </div>
 
       <div className="form-output-wrapper">
+      <div className="form-title">
+        <p>Predict Your Engagement</p>
+      </div>  
         <div className="input-section">
         <EngagementForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
           {errorMessage && <ErrorMessage message={errorMessage} />}
