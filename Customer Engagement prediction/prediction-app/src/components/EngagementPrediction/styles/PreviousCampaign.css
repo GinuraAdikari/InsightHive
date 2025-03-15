@@ -1,18 +1,150 @@
 .previous-campaign-container {
-    width: 100%; /* Takes full screen width */
-    padding: 20px;
-    background-color: #f8f8f8;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Flex container for chart and engagement list */
+.campaign-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch; /* Ensures both children stretch to the same height */
+  gap: 20px;
+  margin-top: 20px;
+}
+
+
+/* Left section - Chart */
+.chart-wrapper {
+  flex: 2;
+  padding: 15px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  min-height: 320px; /* Ensures a minimum height */
+}
+
+/* Right section - Campaign details */
+.details-wrapper {
+  flex: 1;
+  padding: 15px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Enables scrolling if content exceeds height */
+  min-height: 320px;
+  max-height: 400px; /* Ensures it does not exceed chart height */
+}
+/* Chart container */
+.chart-container {
+  flex: 2;
+  padding: 10px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .campaign-content {
+    flex-direction: column; /* Stack items on smaller screens */
   }
-  
-  .previous-campaign-info p {
-    font-size: 14px;
-    line-height: 1.5;
-  } 
-  
-  .previous-campaign-info p strong {
-    font-weight: bold;
+
+  .chart-wrapper,
+  .details-wrapper {
+    width: 90%;
+    max-height: none; /* Allow them to take full height */
   }
-  
+
+  .details-wrapper {
+    max-height: 250px; /* Adjusted height for smaller screens with scrolling */
+  }
+}
+
+.previous-campaign-info p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.previous-campaign-info p strong {
+  font-weight: bold;
+}
+
+/* Dropdown container */
+.dropdown-container {
+  display: flex;
+}
+
+.campaign-dropdown {
+  display:flex;
+  justify-content: space-between;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  max-height: 30px; /* Limit dropdown height */
+  overflow-y: auto; /* Enable scrolling */
+}
+
+/* Dropdown select */
+.dropdown-container select {
+  width: 150px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* Limit dropdown items to 3 visible at a time */
+.dropdown-container select option {
+  height: 30px;
+}
+
+/* Styling for details text */
+.details-container p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.details-container p strong {
+  font-weight: bold;
+}
+
+/* direcction buttons */
+.title-dir-buttons{
+  right: 10px;
+  margin-left: 20px;
+}
+
+/* Styling for navigation buttons */
+.title-dir-buttons button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect */
+.title-dir-buttons button:hover {
+  background-color: #0056b3;
+  transform: scale(1.1);
+}
+
+/* Disabled state */
+.title-dir-buttons button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}

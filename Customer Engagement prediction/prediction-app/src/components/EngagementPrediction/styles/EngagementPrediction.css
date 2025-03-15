@@ -56,6 +56,10 @@ body, html {
     flex-wrap: wrap;  /* Ensure the layout adjusts for smaller screens */
 }
 
+.form-title{
+    display: block;
+}
+
 /* Form Styling */
 .engagement-form {
     display: grid;  /* Use grid for layout */
