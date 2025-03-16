@@ -14,10 +14,9 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0.9rem;
+    padding: 1.5rem;
     min-height: 100vh;
     background: linear-gradient(135deg, #6e8efb, #a777e3, #fc6f92);
-    overflow-y: hidden;
 }
 
 /* Page Title */
@@ -26,7 +25,7 @@ body, html {
     font-weight: bold;
     color: #ffffff;
     margin-top: 1rem;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.8rem;
     text-shadow: 2px 2px 8px rgba(0, 0, 0.5, 0.5);
     text-align: center;
 }
@@ -57,7 +56,13 @@ body, html {
 }
 
 .form-title{
-    display: block;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 1rem;
+    margin-bottom: 0.4rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0.5, 0.5);
+    text-align: center;
 }
 
 /* Form Styling */
@@ -66,7 +71,7 @@ body, html {
     grid-template-columns: 1fr 1fr; /* Two equal columns */
     gap: 1.5rem;
     width: 100%;
-    max-width: 600px;
+    max-width: 92%;
     background: rgba(255, 255, 255, 0.5);
     padding: 2rem;
     border-radius: 12px;
@@ -81,15 +86,60 @@ body, html {
     color: #333;
 }
 
+/* Wrapper for Form and Output */
+.form-output-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 80%;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+/* Input Section */
 .input-section {
+    flex: 1;
+    width: 100%;
+    max-width: 92%;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .output-section {
-    display: block;
+    flex: 1;
+    max-width: 45%;
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    min-height: 300px;
+    max-width: fit-content;
+}
+
+
+.output-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.output-content, .placeholder-text {
+    font-size: 1rem;
+    color: #555;
 }
 
 /* Responsive Form for Smaller Screens */
 @media (max-width: 768px) {
+    .form-output-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .input-section, .output-section {
+        width: 100%;
+        max-width: 600px;
+    }
+
     .engagement-form {
         grid-template-columns: 1fr; /* Single column on smaller screens */
         padding: 1.5rem;

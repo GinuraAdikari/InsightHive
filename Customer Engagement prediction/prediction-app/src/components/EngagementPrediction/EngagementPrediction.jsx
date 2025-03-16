@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import EngagementForm from "./EngagementForm";
 import OutputSection from "./OutputSection";
 import ErrorMessage from "./ErrorMessage";
-import "./styles/EngagementPrediction.css";
 import PreviousCampaign from "./PreviousCampaign"; // Import the new component
+import "./styles/EngagementPrediction.css";
 
 
 const EngagementPrediction = () => {
@@ -103,11 +103,11 @@ const EngagementPrediction = () => {
       <div className="previous-campaign-wrapper">
         <PreviousCampaign previousCampaign={previousCampaign} />
       </div>
+      <div className="form-title">
+          <p>Predict Your Engagement</p>
+      </div> 
 
       <div className="form-output-wrapper">
-      <div className="form-title">
-        <p>Predict Your Engagement</p>
-      </div>  
         <div className="input-section">
         <EngagementForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
           {errorMessage && <ErrorMessage message={errorMessage} />}

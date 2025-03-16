@@ -1,10 +1,17 @@
 .previous-campaign-container {
   width: 80%;
   padding: 20px;
-  background-color: #f8f8f8;
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
   margin-bottom: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.previous-campaign-container h2{
+  text-align: center;
+  font-size: 3rem;
+  font-weight:1000;
+  color: #eeebf7;
 }
 
 /* Flex container for chart and engagement list */
@@ -38,7 +45,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow-y: auto; /* Enables scrolling if content exceeds height */
   min-height: 320px;
-  max-height: 400px; /* Ensures it does not exceed chart height */
+  max-height: 360px; /* Ensures it does not exceed chart height */
 }
 /* Chart container */
 .chart-container {
@@ -120,8 +127,20 @@
 
 /* direcction buttons */
 .title-dir-buttons{
-  right: 10px;
-  margin-left: 20px;
+  display: flex;
+  justify-content: space-between; /* Push elements to opposite corners */
+  align-items: center; /* Align vertically */
+  width: 100%;
+}
+
+.button-group {
+  display: flex;
+  gap: 8px; /* Adds spacing between buttons */
+}
+
+.title-dir-buttons h3 {
+  margin: 0;
+  order: 0; /* Moves the title to the right */
 }
 
 /* Styling for navigation buttons */
@@ -129,11 +148,13 @@
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 8px 12px;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  margin: 0 5px;
+  padding: 5px 10px;
+  font-size: 16px;
 }
 
 /* Hover effect */

@@ -2,7 +2,7 @@ import React from 'react';
 import SelectInput from './Inputs/SelectInput';
 import TextareaInput from './Inputs/TextareaInput';
 import CheckboxInput from './Inputs/CheckboxInput';
-import "./styles/Input.css";
+import "./styles/EngagementForm.css";
 
 const EngagementForm = ({ formData, handleChange, handleSubmit }) => {
   return (
@@ -47,7 +47,7 @@ const EngagementForm = ({ formData, handleChange, handleSubmit }) => {
         value={formData.search_tags} 
         onChange={handleChange} 
         placeholder="Enter search tags separated by commas" 
-      />
+        />
       <label>
         Campaign Duration:
         <input
@@ -75,7 +75,6 @@ const EngagementForm = ({ formData, handleChange, handleSubmit }) => {
         checked={formData.isAvailable} 
         onChange={handleChange} 
       />
-
       <button type="submit" className="submit-button">Submit</button>
     </form>
   );

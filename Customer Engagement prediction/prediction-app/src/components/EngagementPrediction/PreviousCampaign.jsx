@@ -88,7 +88,7 @@ const PreviousCampaign = () => {
 
   return (
     <div className="previous-campaign-container">
-      <h2>Previous Campaigns</h2>
+      <h2> Analyse Previous Campaigns Engagements</h2>
 
       <div className="dropdown-container">
         <div className="campaign-selection">
@@ -114,12 +114,13 @@ const PreviousCampaign = () => {
                 <div className="chart-navigation">
                   <div className="title-dir-buttons">
                     <h3>Engagement Trends</h3>
-                    {/* Left Button for Previous Time Points */}
-                    <button onClick={handlePrevBatch} disabled={visibleStartIndex === 0}>&lt;</button>
-                    {/* Right Button for Next Time Points */}
-                    <button onClick={handleNextBatch} disabled={visibleStartIndex + ITEMS_PER_PAGE >= allEngagements.length}>
-                      &gt;
-                    </button>
+                    {/* Buttons grouped on the right */}
+                    <div className="button-group">
+                      <button onClick={handlePrevBatch} disabled={visibleStartIndex === 0}>&lt;</button>
+                      <button onClick={handleNextBatch} disabled={visibleStartIndex + ITEMS_PER_PAGE >= allEngagements.length}>
+                        &gt;
+                      </button>
+                    </div>
                   </div>
                   <div className="chart-container">
                     <ResponsiveContainer width="100%" height={300}>
