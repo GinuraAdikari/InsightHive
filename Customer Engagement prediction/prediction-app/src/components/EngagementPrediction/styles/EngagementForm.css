@@ -29,9 +29,16 @@ label {
     border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 1rem;
+    font-family:Arial, Helvetica, sans-serif;
     transition: all 0.3s ease;
     width: 100%;
     box-sizing: border-box;
+    width: 100%;
+    min-height: 45px;  /* Minimum height */
+    max-height: 10px; /* Maximum height */
+    resize: none; 
+    overflow-y: auto;  /* Enables scrolling if text exceeds max height */
+
 }
 
 .animated-input:focus {
@@ -58,6 +65,8 @@ label {
     transform: translateY(-3px);
 }
 
+
+
 /* Button Responsive Adjustment */
 @media (max-width: 768px) {
     .submit-button {
@@ -66,24 +75,10 @@ label {
     }
 }
 
-.output-container {
-    flex: 1;
-    max-width: 45%;
-    padding: 20px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    min-height: 300px;
-}
-
-.output-title {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.output-content, .placeholder-text {
-    font-size: 1rem;
-    color: #555;
+.error-message{
+    font-size: 18px;
+    color: red;
+    padding-left: 12px;
 }
 
 .placeholder-text {

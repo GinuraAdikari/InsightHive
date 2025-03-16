@@ -1,5 +1,5 @@
 import React from 'react';
-import "./styles/output.css"
+import "./styles/EngagementForm.css"
 
 const OutputSection = ({ responseMessage }) => {
   return (
