@@ -64,3 +64,7 @@ def get_recommendations(visitor_id):
     top_indices = similarities.argsort()[-5:][::-1]
 
     return jsonify({'visitor_id': visitor_id, 'recommendations': top_indices.tolist()})
+
+@rec_bp.route("/items", methods=['GET'])
+def get_items():
+    return jsonify({'items': list(train_data_encoded['item'])})
