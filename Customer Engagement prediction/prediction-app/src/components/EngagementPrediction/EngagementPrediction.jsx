@@ -83,8 +83,8 @@ const EngagementPrediction = () => {
       
       if (response.ok) {
         const data = await response.json();
-        setResponseMessage(`Prediction: ${data.prediction[0]}`);
-        setOutput(data.prediction[0]);
+        setResponseMessage(`The Engagement Level : ${data.prediction}`);
+        setOutput(data.prediction);
       } else {
         setResponseMessage("Error in API call");
       }
