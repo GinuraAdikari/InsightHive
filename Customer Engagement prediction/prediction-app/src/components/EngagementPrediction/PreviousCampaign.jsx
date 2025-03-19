@@ -156,7 +156,7 @@ const PreviousCampaign = () => {
                       <p><strong>Has Image:</strong> {selectedCampaignDetails.has_image}</p>
                       <p><strong>Campaign Index:</strong> {selectedCampaignDetails.campaign_index}</p>
                       <p><strong>Platform:</strong> {selectedCampaignDetails.platform}</p>
-                      <p><strong>Engagement %:</strong> {selectedCampaignDetails.engagement_percentage}%</p>
+                      <p><strong>Engagement:</strong> {selectedCampaignDetails.engagement_percentage}</p>
                     </div>
                   </>
                 ) : (
