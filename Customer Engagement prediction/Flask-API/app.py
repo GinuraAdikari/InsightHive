@@ -4,6 +4,9 @@ from model import HeteroGCN  # Import your trained model
 from pymongo import MongoClient
 from flask_cors import CORS
 import numpy as np
+import joblib
+import pandas as pd
+
 
 app = Flask(__name__)
 CORS(app)
@@ -18,9 +21,14 @@ model = HeteroGCN(hidden_dim=32)
 
 # Load the saved model weights
 model_weights_path = "./sage_model.pth"
-state_dict = torch.load(model_weights_path, map_location=torch.device("cpu"))
+state_dict = torch.load(model_weights_path, map_location=torch.device("cpu"), weights_only=True)
 model.load_state_dict(state_dict)
 model.eval()  # Set model to evaluation mode
+
+# Load the saved scalers
+scaler_days = joblib.load("scaler_days.pkl")
+scaler_budget = joblib.load("scaler_budget.pkl")
+
 
 @app.route("/previous-campaigns", methods=["GET"])
 def get_previous_campaigns():
@@ -112,8 +120,9 @@ def predict():
         search_tag_emb = get_text_embedding(data.get("searchTags", []), embeddings_index)
         advertiser_emb = get_text_embedding(data.get("advertiser", []), embeddings_index)
 
-        duration = data["duration"]
-        budget = data["budget"]
+        # Get duration and budget, then apply MinMax scaling
+        duration = scaler_days.transform([[data["duration"][0]]])[0]  # Ensure correct shape
+        budget = scaler_budget.transform([[data["budget"][0]]])[0]    # Ensure correct shape
 
         region_one_hot = tuple(data.get("region", [0, 0, 0, 0, 0, 0, 1]))  # Convert list to tuple for lookup
 
@@ -128,8 +137,8 @@ def predict():
         network_id = 353 
         template_id = 90 
 
-        # Combine campaign and duration into a single tensor
-        campaign_with_duration = torch.tensor(campaign + duration + budget, dtype=torch.float)
+        # Combine campaign and scaled duration & budget into a single tensor
+        campaign_with_duration = torch.tensor(campaign + duration.tolist() + budget.tolist(), dtype=torch.float)
         
         # Convert all inputs to tensors
         test_input = {
@@ -144,7 +153,6 @@ def predict():
             "creative": torch.tensor(data["creative"], dtype=torch.float),
             "region": torch.tensor(data["region"], dtype=torch.float),  # Keep original region one-hot
             "currency": currency_code,  # Use the mapped currency one-hot
-
         }
 
         # Convert all tensors to 2D by adding an extra dimension
@@ -162,10 +170,10 @@ def predict():
         print(response)
         return jsonify(response)
 
-    
     except Exception as e:
         print("Error:", str(e))
         return jsonify({"error": str(e)}), 400
+
     
 
 # Fetch engagement trends for a campaign
