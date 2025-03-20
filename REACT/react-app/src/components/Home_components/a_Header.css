@@ -1,0 +1,80 @@
+/* Transparent and blurry bar at the top */
+.black-bar {
+    height: 1in; /* 1 inch height */
+    width: 100%; /* Full width */
+    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black */
+    backdrop-filter: blur(10px); /* Blur effect */
+    position: fixed; /* Fixed position */
+    top: 0; /* Stick to the top */
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+/* Header container */
+.header {
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 4px 20px;
+    position: relative; /* Ensure header is below the black bar */
+    z-index: 999; /* Lower z-index than the black bar */
+}
+
+/* Toolbar styling */
+.MuiToolbar-root {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px; /* Add padding to the toolbar */
+}
+
+/* Logo and site name container */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between logo and text */
+}
+
+/* Logo styling */
+.logo {
+    height: 100px; /* Logo size set to 100px */
+    width: auto; /* Maintain aspect ratio */
+}
+
+/* Site name styling */
+.site-name {
+    color: lightcyan;
+    font-weight: 900;
+    font-size: 2.6rem; /* Larger font size for site name */
+    margin: 0; /* Remove default margin */
+    font-family: "Comic Sans MS", "Comic Sans", cursive; /* Comic bold style */
+}
+
+/* Navigation links container */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Space between links */
+}
+
+/* Navigation link styling */
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.3rem; /* Larger font size for navigation links */
+    padding: 10px 15px; /* Add padding to links */
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: lightgreen; /* Hover color */
+}
+
+/* Account icon styling */
+.account-icon {
+    color: white;
+    font-size: 2.6rem; /* Larger icon size to match site name */
+    transition: color 0.5s ease;
+}
+
+.account-icon:hover {
+    color: lightgreen; /* Hover color */
+}
