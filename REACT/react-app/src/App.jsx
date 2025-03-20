@@ -1,57 +1,62 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import AboutUs from "./AboutUs";
-import Login from "./Login";
-import "./App.css";
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
+import Header from './components/Home_components/a_Header';
 
-function Home() {
-  return (
-    <div className="app">
-      {/* Navbar */}
-      <nav className="navbar">
-        <h1 className="logo">InsightHive</h1>
-        <div className="nav-links">
-          <Link to="/about">About Us</Link>
-          <Link to="/login">Login</Link>
-        </div>
-      </nav>
+import CustomerSegmentation from './components/Customer Segmentation/CustomerSegmentation';
+import EngagementPrediction from './components/EngagementPrediction/EngagementPrediction';
+import RecommendationEngines from './components/Recommendation Engine/RecommendationEngines';
+import SentimentAnalysis from './components/Sentiment Analysis/SentimentAnalysis';
+import Login from './components/Login/Login';
+import SignUp from './components/SignUp/SignUp';
+import { supabase } from './supabaseClient';
+import './App.css';
 
-      {/* Main Section */}
-      <section className="main-content">
-        <h2 className="section-title">Our Capabilities</h2>
-        <div className="components-grid">
-          <div className="component-box customer">
-            <i className="fas fa-users icon"></i>
-            <p>Customer Segmentation</p>
-          </div>
-          <div className="component-box sentiment">
-            <i className="fas fa-chart-line icon"></i>
-            <p>Sentiment Analysis</p>
-          </div>
-          <div className="component-box engagement">
-            <i className="fas fa-comments icon"></i>
-            <p>Engagement Prediction</p>
-          </div>
-          <div className="component-box recommendation">
-            <i className="fas fa-star icon"></i>
-            <p>Recommendation System</p>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
+import Footer from './components/Home_components/a_Footer';
+import Home from './components/Home_components/Home';
+import AboutUs from './components/AboutUs'
+import MyAccount from './components/MyAccount';;
+
 
 function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-    </Router>
-  );
+
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        // Check if user is already logged in
+        const checkUser = async () => {
+            const { data: { user } } = await supabase.auth.getUser();
+            setUser(user);
+        };
+
+        checkUser();
+
+        // Listen for auth state changes
+        const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+            setUser(session?.user || null);
+        });
+
+        return () => {
+            authListener.subscription.unsubscribe();
+        };
+    }, []);
+
+    return (
+        <Router>
+            <Header />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<AboutUs />} />
+                <Route path="/customer-segmentation" element={<CustomerSegmentation />} />
+                <Route path="/engagement-prediction" element={<EngagementPrediction />} />
+                <Route path="/recommendation-engines" element={<RecommendationEngines />} />
+                <Route path="/sentiment-analysis" element={<SentimentAnalysis />} />
+                <Route path="/login" element={user ? <Navigate to="/my-account" /> : <Login />} />
+                <Route path="/signup" element={user ? <Navigate to="/my-account" /> : <SignUp />} />
+                <Route path="/my-account" element={user ? <MyAccount /> : <Navigate to="/login" />} />
+            </Routes>
+            <Footer />
+        </Router>
+    );
 }
 
 export default App;
