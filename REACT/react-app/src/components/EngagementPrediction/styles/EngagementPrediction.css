@@ -1,0 +1,161 @@
+/* EngagementPrediction.css */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* Container and Background */
+.engagement-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6e8efb, #a777e3, #fc6f92);
+}
+
+/* Page Title */
+.engagement-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 1rem;
+    margin-bottom: 0.8rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0.5, 0.5);
+    text-align: center;
+}
+
+/* Description Text */
+.engagement-description {
+    font-size: 1.5rem;
+    color: #f3f3f3;
+    max-width: 700px;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.previous-campaign-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Center the content inside if needed */
+}
+
+/* Form and Output Container */
+.form-output-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    gap: 2rem;
+    flex-wrap: wrap;  /* Ensure the layout adjusts for smaller screens */
+}
+
+.form-title{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 1rem;
+    margin-bottom: 0.4rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0.5, 0.5);
+    text-align: center;
+}
+
+/* Form Styling */
+.engagement-form {
+    display: grid;  /* Use grid for layout */
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 92%;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.engagement-form label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Wrapper for Form and Output */
+.form-output-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 80%;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+/* Input Section */
+.input-section {
+    flex: 1;
+    width: 100%;
+    max-width: 92%;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.output-section {
+    flex: 1;
+    max-width: 45%;
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    min-height: 300px;
+    max-width: fit-content;
+}
+
+
+.output-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.output-content, .placeholder-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Responsive Form for Smaller Screens */
+@media (max-width: 768px) {
+    .form-output-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .input-section, .output-section {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .engagement-form {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+        padding: 1.5rem;
+        width: 100%;
+        max-width: 90%;
+    }
+
+    .engagement-container {
+        width: 100%;
+    }
+
+    .submit-button {
+        grid-column: span 1; /* Make the submit button fit on one column */
+        width: 100%;
+    }
+}
+
