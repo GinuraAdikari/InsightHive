@@ -1,10 +1,18 @@
+/* Background styling */
+.segmentation-background {
+    background: linear-gradient(#546FDB, #BE6FBC);
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Container for the heading and intro paragraph */
 .segmentation-container {
-    padding: 40px;
+    padding: 25px;
     text-align: center;
     color: white;
     background: rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
-    margin: 20px auto;
+    border-radius: 35px;
+    margin: 15px auto;
     max-width: 800px;
 }
 
@@ -15,5 +23,174 @@
 
 .segmentation-container p {
     font-size: 1.2rem;
-    line-height: 1.6;
+    line-height: 1.5;
 }
+
+/* Container for the data details */
+.data-container {
+    padding: 20px;
+    color: white;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.data-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.data-container p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Table Styling */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.data-table th,
+.data-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.data-table th {
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 1.2rem;
+    color: #ffcc00;
+}
+
+.data-table td {
+    font-size: 1rem;
+    color: #ddd;
+}
+
+.data-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Container for the plots/graphs */
+.plots-container {
+    padding: 20px;
+    color: white;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.plots-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Individual plot item */
+.plot-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.plot-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #ffcc00;
+}
+
+.plot-item img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Container for the clusters */
+.clusters-container {
+    padding: 20px;
+    color: white;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.clusters-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Cluster buttons layout */
+.cluster-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Cluster button styling */
+.cluster-button {
+    background-color: #ffcc00;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cluster-button:hover {
+    background-color: #e6b800;
+}
+
+.cluster-button.active {
+    background-color: #e6b800;
+    font-weight: bold;
+}
+
+/* Cluster details styling */
+.cluster-details {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.cluster-details h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #ffcc00;
+}
+
+.cluster-details h4 {
+    font-size: 1.3rem;
+    margin: 15px 0 10px;
+    color: #ffcc00;
+}
+
+.cluster-details ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.cluster-details ul li {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.cluster-details p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
