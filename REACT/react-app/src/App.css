@@ -2,9 +2,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #121212; /* Dark background for the entire app */
-  color: rgb(87, 2, 48);
-  padding-top: 120px;
+  background: linear-gradient(150deg,#ff8800, #240f53, #240f53, #6e8efb);
 }
 
 a {
@@ -16,4 +14,73 @@ a {
 .main-content {
   padding-top: 80px; /* To account for the fixed header */
   min-height: 100vh;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.welcome-message {
+  margin-top: 10rem;
+  margin-bottom: 5rem;
+}
+
+.welcome-message h1 {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 2.5em;
+  margin-bottom: 1rem;
+  color: rgb(255, 136, 0);
+}
+
+.welcome-message p {
+  font-size: 1.2em;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  width: 80%;
+  max-width: 1200px;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  .grid-container {
+    margin-top: 3rem;
+    grid-template-columns: 1fr; /* One column on smaller screens */
+  }
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh; /* Use viewport height */
+  min-height: 150px;
+  border-radius: 15px;
+  border-style: solid;
+  text-decoration: none;
+  color: white;
+  font-size: 1.5em;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+}
+
+
+
+@media (max-width: 768px) {
+  .box {
+    height: 15vh; /* Reduce size on smaller screens */
+  }
 }
