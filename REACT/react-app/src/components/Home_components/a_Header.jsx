@@ -49,16 +49,19 @@ const Header = () => {
 
                     {/* Navigation links */}
                     <div className="nav-links">
+                        <Link to="/" className="nav-link">
+                            Home
+                        </Link>
                         <Link to="/about" className="nav-link">
                             About Us
                         </Link>
 
                         {user ? (
                             // If user is logged in, show Logout button
-                            <Button onClick={handleLogout} className="nav-link">Logout</Button>
+                            <Button onClick={handleLogout} className="nav-link-button">Logout</Button>
                         ) : (
                             // If user is not logged in, show Login button
-                            <Link to="/login" className="nav-link">Login</Link>
+                            <Link to="/login" className="nav-link-button">Login</Link>
                         )}
 
                         <IconButton color="inherit" className="account-icon">
