@@ -1,18 +1,9 @@
-/* Transparent and blurry bar at the top */
-.black-bar {
-    height: 1in; /* 1 inch height */
-    width: 100%; /* Full width */
-    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black */
-    backdrop-filter: blur(10px); /* Blur effect */
-    position: fixed; /* Fixed position */
-    top: 0; /* Stick to the top */
-    z-index: 1000; /* Ensure it's above other content */
-}
-
 /* Header container */
 .header {
-    background: transparent !important;
-    box-shadow: none !important;
+    background: rgba(255, 255, 255, 0.047) !important; /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
+    box-shadow: none;
     padding: 4px 20px;
     position: relative; /* Ensure header is below the black bar */
     z-index: 999; /* Lower z-index than the black bar */
@@ -21,9 +12,21 @@
 /* Toolbar styling */
 .MuiToolbar-root {
     display: flex;
+    flex-wrap: wrap; /* Allow items to wrap if needed */
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px; /* Add padding to the toolbar */
+    padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+    .site-name {
+        font-size: 1.8rem; /* Reduce size on smaller screens */
+    }
+
+    .nav-links {
+        flex-direction: column; /* Stack links vertically */
+        gap: 10px;
+    }
 }
 
 /* Logo and site name container */
@@ -41,11 +44,10 @@
 
 /* Site name styling */
 .site-name {
+    font-family: 'Times New Roman', Times, serif;
     color: lightcyan;
     font-weight: 900;
     font-size: 2.6rem; /* Larger font size for site name */
-    margin: 0; /* Remove default margin */
-    font-family: "Comic Sans MS", "Comic Sans", cursive; /* Comic bold style */
 }
 
 /* Navigation links container */
@@ -66,6 +68,17 @@
 
 .nav-link:hover {
     color: lightgreen; /* Hover color */
+}
+
+.nav-link-button {
+    background: #6a0dad; /* Purple color */
+    font-size: 1.3rem;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
 }
 
 /* Account icon styling */

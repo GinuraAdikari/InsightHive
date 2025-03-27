@@ -12,7 +12,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Connect to MongoDB
-client = MongoClient("mongodb://localhost:27017/")  # Change if hosted elsewhere
+client = MongoClient("mongodb+srv://admin:wWjG3R!xX_CRDhY@insight.zvb5r.mongodb.net/")  # Change if hosted elsewhere
 db = client["Customer_Engagement"]  # Database name
 collection = db["Prediction_details"]  # Collection name
 
