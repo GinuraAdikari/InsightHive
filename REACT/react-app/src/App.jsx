@@ -18,6 +18,7 @@ import AboutUs from './components/AboutUs'
 import MyAccount from './components/MyAccount';
 
 
+
 const Home = () => {
     const [user, setUser] = useState(null);
     const [popupMessage, setPopupMessage] = useState("");
@@ -44,7 +45,7 @@ const Home = () => {
             {popupMessage && <PopupMessage message={popupMessage} onClose={() => setPopupMessage("")} />}
 
             <div className="welcome-message">
-                <h1>Welcome to Insight Hive</h1>
+                <h1>Welcome to <span>Insight Hive</span></h1>
                 <p>Unlock the power of data with our advanced analytics tools.</p>
             </div>
             <div className="grid-container">

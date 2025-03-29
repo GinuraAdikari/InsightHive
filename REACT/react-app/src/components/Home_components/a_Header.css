@@ -58,16 +58,18 @@
 }
 
 /* Navigation link styling */
-.nav-link {
+.nav-link p{
     color: white;
-    text-decoration: none;
     font-size: 1.3rem; /* Larger font size for navigation links */
     padding: 10px 15px; /* Add padding to links */
-    transition: color 0.3s ease;
 }
 
-.nav-link:hover {
-    color: lightgreen; /* Hover color */
+.nav-link p:hover{
+    background: linear-gradient(#ff3f02, #daaf23);
+    transition: color 0.3s ease;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
 .nav-link-button {
