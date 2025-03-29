@@ -2,7 +2,9 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(150deg,#ff8800, #240f53, #240f53, #6e8efb);
+  /* background: linear-gradient(150deg,#ff8800, #240f53, #240f53, #6e8efb);  */
+  background: black; 
+  background-image: url('./assets/bg.png');
 }
 
 a {
@@ -34,12 +36,36 @@ a {
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 2.5em;
   margin-bottom: 1rem;
-  color: rgb(255, 136, 0);
+  color: #a09d9d;
+}
+
+.welcome-message span {
+  color: #daaf23;
+  font-size: 2.5rem;
 }
 
 .welcome-message p {
   font-size: 1.2em;
+  overflow: hidden; /* Hide overflow */
+  border-right: .15em solid #daaf23; 
+  animation: 
+  typing 3.5s steps(20, end),
+  blink-caret .75s step-end infinite;
+
 }
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The cursor blink effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #daaf23; }
+}
+
 
 .grid-container {
   display: grid;
@@ -58,29 +84,57 @@ a {
 }
 
 .box {
+  height: 200px;
+  border-radius: 15px;
+  border: 2px solid #daaf23;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 20vh; /* Use viewport height */
-  min-height: 150px;
-  border-radius: 15px;
-  border-style: solid;
-  text-decoration: none;
+  text-align: center;
   color: white;
   font-size: 1.5em;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  padding: 15px;
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.box h2 {
+  font-size: 2rem;
+  margin: 0;
+  transition: all 0.3s ease;
+  z-index: 2;
 }
 
 .box:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
   cursor: pointer;
+  background: linear-gradient(#ff3f02, #daaf23);
+  border: #ff3f02;
 }
 
+.box:hover h2 {
+  transform: translateY(-10px);
+}
 
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .grid-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  .box {
+    width: 45%; /* Two boxes per row on medium screens */
+    min-width: 200px;
+  }
+}
 
 @media (max-width: 768px) {
   .box {
-    height: 15vh; /* Reduce size on smaller screens */
+    width: 90%; /* Full width on small screens */
+    height: 150px;
   }
 }

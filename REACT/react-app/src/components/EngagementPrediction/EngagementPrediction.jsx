@@ -96,7 +96,7 @@ const EngagementPrediction = () => {
   return (
     <>
     <div className="engagement-container">
-      <h1 className="engagement-title">Customer Engagement Prediction</h1>
+      <h1 className="engagement-title">Customer Engagement <span>Prediction</span> </h1>
       <p className="engagement-description">
         Predict your future customer engagement level for the advertisement you are about to post!
       </p>
