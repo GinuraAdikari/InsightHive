@@ -1,0 +1,274 @@
+/* === General Layout === */
+.container {
+  padding: 2rem;
+  background: linear-gradient(135deg, #0d0d0d, #1a1a2e);
+  min-height: 100vh;
+  color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* === Gradient Hero Title === */
+.gradientTitle {
+  font-size: 2.8rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #f8e9a1, #a1c4fd, #c2e9fb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* === Description Card === */
+.descriptionBox {
+  background-color: #111;
+  padding: 2rem;
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 16px;
+  box-shadow: 0 0 12px #0ff, 0 0 6px #0ff inset;
+  width: 90%;
+  max-width: 600px;
+  color: #fff;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.descriptionBox:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px #0ff, 0 0 12px #0ff inset;
+}
+
+.descriptionBox h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #f8e9a1;
+}
+
+.descriptionBox p {
+  color: #ddd;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* === Upload & Mode Controls === */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.selectBox {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: #222;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 8px;
+}
+
+.fileRow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.tooltipWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.infoIcon {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #00bfff;
+}
+
+.tooltipText {
+  visibility: hidden;
+  width: max-content;
+  max-width: 240px;
+  background-color: #111;
+  color: #fff;
+  text-align: left;
+  border-radius: 8px;
+  padding: 0.6rem;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+  font-size: 0.85rem;
+}
+
+.tooltipWrapper:hover .tooltipText {
+  visibility: visible;
+  opacity: 1;
+}
+
+.uploadSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.uploadBtn {
+  background: linear-gradient(90deg, #00f2fe, #4facfe);
+  border: none;
+  padding: 0.7rem 2rem;
+  font-size: 1rem;
+  color: black;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.uploadBtn:hover {
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+}
+
+.error {
+  background-color: #ff4d4f;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-top: 1rem;
+  text-align: center;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 10px rgba(255, 77, 79, 0.5);
+}
+
+/* === Loading Text === */
+.loading {
+  text-align: center;
+  color: #f39c12;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.resultsWrapper{
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* === Results Table === */
+.resultsSection {
+  margin-top: 3rem;
+}
+
+.resultsSection h3 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #f9ca24;
+}
+
+.resultTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1f1f2e;
+  color: white;
+  box-shadow: 0 0 10px #0ff3;
+  font-size: 0.95rem;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.resultsTitle {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f9ca24;
+  margin-bottom: 1rem;
+}
+
+.resultTable th,
+.resultTable td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #3c3c50;
+  text-align: center;
+}
+
+.resultTable th {
+  background-color: #2f2f44;
+  color: #00d8ff;
+}
+
+.resultTable tr:nth-child(even) {
+  background-color: #29293f;
+}
+
+/* === Pie Chart === */
+.pieChartContainer {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+/* === Download Button === */
+.downloadButton {
+  margin-top: 2rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.3rem;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.downloadButton:hover {
+  background-color: #218838;
+}
+
+/* === Result Animation === */
+.resultsContainer {
+  margin: 3rem, auto;
+  padding: 2rem;
+  background-color: #111;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  animation: fadeInUp 1s ease-in-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+  max-width: 750px;
+  width: 100%;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Responsive Design === */
+@media screen and (max-width: 768px) {
+  .descriptionBox {
+    padding: 1rem;
+    width: 95%;
+  }
+
+  .gradientTitle {
+    font-size: 2rem;
+  }
+
+  .uploadBtn {
+    width: 100%;
+  }
+
+  .uploadSection {
+    gap: 0.75rem;
+  }
+}
