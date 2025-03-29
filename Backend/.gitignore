@@ -7,3 +7,5 @@ __pycache__/
 *.sqlite3
 
 models/customer_engagement_model/glove.6B.50d.txt
+models/absa_model/bert_absc_model
+models/absa_model/roberta_ate_model
