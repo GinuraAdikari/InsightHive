@@ -50,10 +50,10 @@ const Header = () => {
                     {/* Navigation links */}
                     <div className="nav-links">
                         <Link to="/" className="nav-link">
-                            Home
+                            <p>Home</p>
                         </Link>
                         <Link to="/about" className="nav-link">
-                            About Us
+                            <p>About Us</p>
                         </Link>
 
                         {user ? (
