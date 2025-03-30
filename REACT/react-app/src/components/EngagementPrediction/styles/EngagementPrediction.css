@@ -17,7 +17,6 @@ body, html {
     align-items: center;
     padding: 1.5rem;
     min-height: 100vh;
-    /* background: linear-gradient(150deg,#ff8800, #240f53, #240f53, #240f53, #6e8efb); */
     background: #0000;
 }
 
@@ -62,35 +61,13 @@ body, html {
 }
 
 .form-title{
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: bold;
     color: #ffffff;
     margin-top: 1rem;
-    margin-bottom: 0.4rem;
+    margin-bottom: 1.5rem;
     text-shadow: 2px 2px 8px rgba(0, 0, 0.5, 0.5);
     text-align: center;
-}
-
-/* Form Styling */
-.engagement-form {
-    display: grid;  /* Use grid for layout */
-    grid-template-columns: 1fr 1fr; /* Two equal columns */
-    gap: 1.5rem;
-    width: 100%;
-    max-width: 100%;
-    background: linear-gradient(#ff3f02, #daaf23);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-.engagement-form label {
-    display: flex;
-    flex-direction: column;
-    font-weight: 600;
-    font-size: 16px;
-    color: #333;
 }
 
 /* Wrapper for Form and Output */
@@ -120,20 +97,21 @@ body, html {
     border: 2px solid #ddd;
     border-radius: 8px;
     background: linear-gradient(#ff3f02, #daaf23);
-    min-height: 300px;
+    min-height: 200px;
     max-width: fit-content;
 }
 
 
 .output-title {
     font-size: 1.5rem;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     color: #ffffff;
+    text-align: center;
 }
 
 .output-content, .placeholder-text {
-    font-size: 1rem;
-    color: #555;
+    font-size: 1.2rem;
+    color: #ffffff;
 }
 
 /* Responsive Form for Smaller Screens */
@@ -164,4 +142,33 @@ body, html {
         width: 100%;
     }
 }
+
+/* Save Button */
+.save-button {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 15px auto;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #ff3f02, #daaf23);
+    border: solid;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+}
+
+.save-button:hover {
+    background: linear-gradient(135deg, #daaf23, #ff3f02);
+    transform: scale(1.05);
+}
+
+.save-button:active {
+    transform: scale(0.95);
+    background: #ff3f02;
+}
+
 
