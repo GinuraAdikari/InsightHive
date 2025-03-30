@@ -9,12 +9,13 @@ import os
 
 engagement_bp = Blueprint('engagement',__name__)
 
-CORS(engagement_bp, resources={r"/engagement/*": {"origins": "http://localhost:5173"}})
+CORS(engagement_bp, resources={r"/*": {"origins": "http://localhost:3000"}})
 
 # Connect to MongoDB
-client = MongoClient("mongodb://localhost:27017/")  # Change if hosted elsewhere
+client = MongoClient("mongodb+srv://admin:wWjG3R!xX_CRDhY@insight.zvb5r.mongodb.net/?retryWrites=true&w=majority&appName=Insight")  # Change if hosted elsewhere
 db = client["Customer_Engagement"]  # Database name
 collection = db["Prediction_details"]  # Collection name
+print(db.list_collection_names())
 
 # Initialize the model
 model = HeteroGCN(hidden_dim=32)
@@ -163,7 +164,7 @@ def predict():
         percentage_output = round(output.squeeze().item() * 100, 2)
 
         # Format response
-        response = {"prediction": f"{percentage_output} % engagement"}
+        response = {"prediction": f"{percentage_output} %"}
         print(response)
         return jsonify(response)
 
@@ -172,30 +173,5 @@ def predict():
         print("Error:", str(e))
         return jsonify({"error": str(e)}), 400
     
-
-# Fetch engagement trends for a campaign
-@engagement_bp.route("/campaign_trend", methods=["GET"])
-def campaign_trend():
-    try:
-        campaign_id = request.args.get("campaign_id")  # Get campaign ID from request
-        if not campaign_id:
-            return jsonify({"error": "Campaign ID is required"}), 400
-
-        # Query MongoDB for all records of the campaign
-        campaign_data = list(collection.find({"campaign_index": int(campaign_id)}))
-
-        if not campaign_data:
-            return jsonify({"error": "No data found"}), 404
-
-        # Prepare data for visualization
-        trend_data = [
-            {"campaign_index": item["campaign_index"], "engagement_score": item["engagement_score"]}
-            for item in campaign_data
-        ]
-
-        return jsonify(trend_data)
-
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
 
 

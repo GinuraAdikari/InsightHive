@@ -3,9 +3,31 @@ label {
     display: flex;
     flex-direction: column;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 1.2rem;
     color: #333;
 }
+
+/* Form Styling */
+.engagement-form {
+    display: grid;  /* Use grid for layout */
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 100%;
+    background: linear-gradient(#ff3f02, #daaf23);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.engagement-form label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    font-size: 19px;
+    color: #fff;
+}
+
 
 /* Align checkbox properly */
 .checkbox-group {

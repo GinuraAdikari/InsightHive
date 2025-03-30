@@ -13,7 +13,7 @@ const PreviousCampaign = () => {
   const [selectedCampaignDetails, setSelectedCampaignDetails] = useState(null);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/previous-campaigns")
+    fetch("http://127.0.0.1:5000/engagement/previous-campaigns")
       .then((response) => response.json())
       .then((data) => {
         setCampaigns(data);
@@ -133,7 +133,7 @@ const PreviousCampaign = () => {
                         <XAxis dataKey="time" angle={-30} textAnchor="end" height={60} />
                         <YAxis />
                         <Tooltip />
-                        <Line type="monotone" dataKey="engagement_percentage" stroke="#8884d8" strokeWidth={2} />
+                        <Line type="monotone" dataKey="engagement_percentage" stroke="red" strokeWidth={2} />
                       </LineChart>
                     </ResponsiveContainer>
                   </div>
