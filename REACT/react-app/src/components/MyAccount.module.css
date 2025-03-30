@@ -1,0 +1,55 @@
+.accountContainer {
+    padding: 2rem;
+    padding-top: 10rem;
+    background: linear-gradient(to right, #0f0f0f, #1a1a1a);
+    min-height: 100vh;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+  }
+  
+  .welcomeText {
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: #f6c90e;
+  }
+  
+  .emailText {
+    font-size: 1.1rem;
+    color: #aaa;
+    margin-bottom: 2rem;
+  }
+  
+  .componentCardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  
+  .componentCard {
+    background-color: #111;
+    border-radius: 12px;
+    padding: 1.5rem;
+    width: 260px;
+    box-shadow: 0 0 10px rgba(255, 105, 135, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+  
+  .componentCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 18px rgba(255, 105, 135, 0.6);
+  }
+  
+  .componentCard h3 {
+    font-size: 1.3rem;
+    color: #f6c90e;
+    margin-bottom: 0.8rem;
+  }
+  
+  .componentCard p {
+    font-size: 0.95rem;
+    color: #ccc;
+    line-height: 1.5;
+  }

@@ -43,7 +43,7 @@ const Header = () => {
                     <div className="logo-container">
                         <img src={logo} alt="Insight Hive Logo" className="logo" />
                         <Typography variant="h4" className="site-name">
-                            Insight Hive
+                            InsightHive
                         </Typography>
                     </div>
 
@@ -58,10 +58,10 @@ const Header = () => {
 
                         {user ? (
                             // If user is logged in, show Logout button
-                            <Button onClick={handleLogout} className="nav-link-button">Logout</Button>
+                            <Button onClick={handleLogout} className="nav-link-button">SignOut</Button>
                         ) : (
                             // If user is not logged in, show Login button
-                            <Link to="/login" className="nav-link-button">Login</Link>
+                            <Link to="/login" className="nav-link-button">SignIn</Link>
                         )}
 
                         <IconButton color="inherit" className="account-icon">
