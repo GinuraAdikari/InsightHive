@@ -6,7 +6,6 @@ import "react-circular-progressbar/dist/styles.css";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import styles from "./SentimentAnalysis.module.css";
-import Papa from "papaparse";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
