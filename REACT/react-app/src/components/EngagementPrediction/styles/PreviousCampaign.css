@@ -1,17 +1,16 @@
 .previous-campaign-container {
   width: 80%;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(113, 113, 113, 0.5);
   border-radius: 10px;
   margin-bottom: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .previous-campaign-container h2{
-  font-family: 'Times New Roman', Times, serif;
   text-align: center;
-  font-size: 3rem;
-  font-weight:1000;
+  font-size: 2.4rem;
+  font-weight:500;
   color: #eeebf7;
 }
 
@@ -22,6 +21,11 @@
   align-items: stretch; /* Ensures both children stretch to the same height */
   gap: 20px;
   margin-top: 20px;
+}
+
+.campaign-selection label{
+  color: #fff;
+  margin-bottom: 5px;
 }
 
 
@@ -48,6 +52,15 @@
   min-height: 320px;
   max-height: 360px; /* Ensures it does not exceed chart height */
 }
+
+.details-wrapper h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: 600;
+  text-align: center;
+}
+
 /* Chart container */
 .chart-container {
   flex: 2;
@@ -57,6 +70,12 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+.details-container p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #212020;
+  margin: 5px;
+}
 
 
 /* Responsive Design */
