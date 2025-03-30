@@ -1,7 +1,7 @@
 /* === General Layout === */
 .container {
   padding: 2rem;
-  background: linear-gradient(135deg, #0d0d0d, #1a1a2e);
+  background: black;
   min-height: 100vh;
   color: #ffffff;
   font-family: 'Segoe UI', sans-serif;
@@ -11,11 +11,11 @@
 .gradientTitle {
   font-size: 2.8rem;
   font-weight: 700;
-  background: linear-gradient(90deg, #f8e9a1, #a1c4fd, #c2e9fb);
+  background: linear-gradient(90deg, #f6c90e, #ff9661, #f9e4b9);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
-  margin-top: 30px;
+  margin-top: 120px;
 }
 
 /* === Description Card === */
@@ -23,9 +23,9 @@
   background-color: #111;
   padding: 2rem;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 30px;
   border-radius: 16px;
-  box-shadow: 0 0 12px #0ff, 0 0 6px #0ff inset;
+  box-shadow: 0 0 12px #ff6f61, 0 0 6px #ffb561 inset;
   width: 90%;
   max-width: 600px;
   color: #fff;
@@ -35,7 +35,7 @@
 
 .descriptionBox:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 20px #0ff, 0 0 12px #0ff inset;
+  box-shadow: 0 0 20px #ff6f61, 0 0 12px #ff6f61 inset;
 }
 
 .descriptionBox h3 {
@@ -119,7 +119,7 @@
 }
 
 .uploadBtn {
-  background: linear-gradient(90deg, #00f2fe, #4facfe);
+  background: linear-gradient(90deg, #ff9a8b, #f6c90e);
   border: none;
   padding: 0.7rem 2rem;
   font-size: 1rem;
@@ -131,7 +131,7 @@
 }
 
 .uploadBtn:hover {
-  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  background: linear-gradient(90deg, #f6c90e, #ff9a8b);
 }
 
 .error {

@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh; /* Full viewport height */
-    background-image: url('../../assets/background.jpg'); /* Add background image if needed */
+    background: black; 
     background-size: cover;
     background-position: center;
 }
@@ -14,6 +14,7 @@
     text-align: center;
     color: white;
     background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 12px #ff6f61, 0 0 6px #ffb561 inset;
     border-radius: 14px;
     max-width: 400px;
     width: 100%;
@@ -55,16 +56,17 @@
 .login-form button {
     width: 100%;
     padding: 10px;
-    background: skyblue;
-    border: none;
     border-radius: 8px;
     cursor: pointer;
     font-size: 1.2rem;
     margin-top: 15px;
+    background: linear-gradient(#ff3f02, #daaf23);
+    border: none;
 }
 
 .login-form button:hover {
-    background: deepskyblue;
+    background: linear-gradient(#ff3f02, #daaf23);
+    border: #ff3f02;
 }
 
 .register-link {
