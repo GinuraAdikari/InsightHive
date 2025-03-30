@@ -73,7 +73,7 @@ const EngagementPrediction = () => {
     setOutput(outputData);
 
     try {
-      const response = await fetch("http://localhost:5000/predict", {
+      const response = await fetch("http://127.0.0.1:5000/engagement/predict", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -83,7 +83,7 @@ const EngagementPrediction = () => {
       
       if (response.ok) {
         const data = await response.json();
-        setResponseMessage(`The Engagement Level : ${data.prediction}`);
+        setResponseMessage(data.prediction);
         setOutput(data.prediction);
       } else {
         setResponseMessage("Error in API call");
@@ -92,6 +92,30 @@ const EngagementPrediction = () => {
       setResponseMessage("Error: " + error.message);
     }
   };
+
+    // Function to save data as a text file
+    const handleSave = () => {
+      const dataToSave = `
+      Platform: ${formData.platform}
+      Channel: ${formData.channel}
+      Region: ${formData.region}
+      Advertiser: ${formData.advertiser}
+      Keywords: ${formData.keywords}
+      Search Tags: ${formData.search_tags}
+      Duration: ${formData.duration}
+      Budget: ${formData.budget}
+      Engagement Prediction Score: ${responseMessage}
+      `;
+  
+      const blob = new Blob([dataToSave], { type: "text/plain" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "Features.txt";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    };
+  
 
   return (
     <>
@@ -113,7 +137,7 @@ const EngagementPrediction = () => {
           {errorMessage && <ErrorMessage message={errorMessage} />}
         </div>
         <div className="output-section">
-          <OutputSection responseMessage={responseMessage} />
+          <OutputSection responseMessage={responseMessage} onSave={handleSave} />
         </div>
       </div>
     </div>
