@@ -12,11 +12,22 @@ engagement_bp = Blueprint('engagement',__name__)
 CORS(engagement_bp, resources={r"/*": {"origins": "http://localhost:3000"}})
 
 # Connect to MongoDB
-client = MongoClient("mongodb+srv://admin:wWjG3R!xX_CRDhY@insight.zvb5r.mongodb.net/?retryWrites=true&w=majority&appName=Insight")  # Change if hosted elsewhere
+MONGO_URI = "mongodb+srv://admin:wWjG3R!xX_CRDhY@insight.zvb5r.mongodb.net/?retryWrites=true&w=majority&appName=Insight"
+client = MongoClient(
+    MONGO_URI,
+    serverSelectionTimeoutMS=60000,  # 60 seconds timeout
+    connectTimeoutMS=60000,  # Ensure connection timeout is also 60 seconds
+    socketTimeoutMS=60000  # Set socket timeout as well
+)
 db = client["Customer_Engagement"]  # Database name
 collection = db["Prediction_details"]  # Collection name
-print(db.list_collection_names())
+try:
+    db = client["Prediction_details"]
+    print("Connected to MongoDB:", db.list_collection_names())
+except Exception as e:
+    print("MongoDB connection error:", e)
 
+    
 # Initialize the model
 model = HeteroGCN(hidden_dim=32)
 
