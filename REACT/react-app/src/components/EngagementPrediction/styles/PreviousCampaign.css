@@ -11,7 +11,7 @@
   text-align: center;
   font-size: 2.4rem;
   font-weight:500;
-  color: #eeebf7;
+  color:  #daa323;
 }
 
 /* Flex container for chart and engagement list */
@@ -165,7 +165,7 @@
 
 /* Styling for navigation buttons */
 .title-dir-buttons button {
-  background-color: #007bff;
+  background: linear-gradient(135deg, #daaf23, #ff3f02);
   color: white;
   border: none;
   border-radius: 5px;

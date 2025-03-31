@@ -5,6 +5,7 @@ from pymongo import MongoClient
 from flask_cors import CORS
 import numpy as np
 import os
+import certifi
 
 
 engagement_bp = Blueprint('engagement',__name__)
@@ -12,20 +13,18 @@ engagement_bp = Blueprint('engagement',__name__)
 CORS(engagement_bp, resources={r"/*": {"origins": "http://localhost:3000"}})
 
 # Connect to MongoDB
+
 MONGO_URI = "mongodb+srv://admin:wWjG3R!xX_CRDhY@insight.zvb5r.mongodb.net/?retryWrites=true&w=majority&appName=Insight"
-client = MongoClient(
-    MONGO_URI,
-    serverSelectionTimeoutMS=60000,  # 60 seconds timeout
-    connectTimeoutMS=60000,  # Ensure connection timeout is also 60 seconds
-    socketTimeoutMS=60000  # Set socket timeout as well
-)
+
+client = MongoClient(MONGO_URI,
+                    tls=True,
+                    tlsCAFile=certifi.where()
+)  # Ensures proper SSL certificates)  # Change if hosted elsewhere
+
+print(certifi.where())  # This gives the path to the certificate file
+
 db = client["Customer_Engagement"]  # Database name
 collection = db["Prediction_details"]  # Collection name
-try:
-    db = client["Prediction_details"]
-    print("Connected to MongoDB:", db.list_collection_names())
-except Exception as e:
-    print("MongoDB connection error:", e)
 
     
 # Initialize the model
