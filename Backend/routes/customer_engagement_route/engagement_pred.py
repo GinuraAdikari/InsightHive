@@ -6,6 +6,7 @@ from flask_cors import CORS
 import numpy as np
 import os
 import certifi
+import time
 
 
 engagement_bp = Blueprint('engagement',__name__)
@@ -16,16 +17,24 @@ CORS(engagement_bp, resources={r"/*": {"origins": "http://localhost:3000"}})
 
 MONGO_URI = "mongodb+srv://admin:wWjG3R!xX_CRDhY@insight.zvb5r.mongodb.net/?retryWrites=true&w=majority&appName=Insight"
 
-client = MongoClient(MONGO_URI,
-                    tls=True,
-                    tlsCAFile=certifi.where()
-)  # Ensures proper SSL certificates)  # Change if hosted elsewhere
+start_time = time.time()
 
-print(certifi.where())  # This gives the path to the certificate file
+try:
+    client = MongoClient(MONGO_URI, tls=True, tlsCAFile=certifi.where(), serverSelectionTimeoutMS=60000)
+    db = client["Customer_Engagement"]
+    collection = db["Prediction_details"]
+    
+    # Check response time for a simple query
+    start_query = time.time()
+    count = collection.count_documents({})  # Count documents in collection
+    end_query = time.time()
+    
+    print(f"✅ Connected successfully! Time taken: {round(end_query - start_time, 2)}s")
+    print(f"📊 Number of documents: {count}")
+    print(f"⏳ Query execution time: {round(end_query - start_query, 2)}s")
 
-db = client["Customer_Engagement"]  # Database name
-collection = db["Prediction_details"]  # Collection name
-
+except Exception as e:
+    print("❌ Connection failed:", e)
     
 # Initialize the model
 model = HeteroGCN(hidden_dim=32)
