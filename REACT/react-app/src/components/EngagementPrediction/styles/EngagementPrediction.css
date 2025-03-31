@@ -58,6 +58,7 @@ body, html {
     width: 80%;
     gap: 2rem;
     flex-wrap: wrap;  /* Ensure the layout adjusts for smaller screens */
+    margin-bottom: 4rem;
 }
 
 .form-title{
