@@ -5,6 +5,7 @@ from pymongo import MongoClient
 from flask_cors import CORS
 import numpy as np
 import os
+import certifi
 
 
 engagement_bp = Blueprint('engagement',__name__)
@@ -12,7 +13,13 @@ engagement_bp = Blueprint('engagement',__name__)
 CORS(engagement_bp, resources={r"/*": {"origins": "http://localhost:3000"}})
 
 # Connect to MongoDB
-client = MongoClient("mongodb+srv://admin:wWjG3R!xX_CRDhY@insight.zvb5r.mongodb.net/?retryWrites=true&w=majority&appName=Insight")  # Change if hosted elsewhere
+client = MongoClient("mongodb+srv://admin:wWjG3R!xX_CRDhY@insight.zvb5r.mongodb.net/?retryWrites=true&w=majority&appName=Insight",
+                    tls=True,
+                    tlsCAFile=certifi.where()
+)  # Ensures proper SSL certificates)  # Change if hosted elsewhere
+
+print(certifi.where())  # This gives the path to the certificate file
+
 db = client["Customer_Engagement"]  # Database name
 collection = db["Prediction_details"]  # Collection name
 print(db.list_collection_names())
