@@ -64,9 +64,11 @@ const Header = () => {
                             <Link to="/login" className="nav-link-button">SignIn</Link>
                         )}
 
-                        <IconButton color="inherit" className="account-icon">
+                        {user && (
+                            <IconButton color="inherit" className="account-icon" onClick={() => navigate('my-account')}>
                             <AccountCircle />
                         </IconButton>
+                        )}
                     </div>
                 </Toolbar>
             </AppBar>
