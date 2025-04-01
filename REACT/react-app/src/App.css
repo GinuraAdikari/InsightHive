@@ -29,7 +29,7 @@ a {
 
 .welcome-message {
   margin-top: 10rem;
-  margin-bottom: 5rem;
+  margin-bottom: -1rem;
 }
 
 .welcome-message h1 {
@@ -44,19 +44,19 @@ a {
   font-size: 2.5rem;
 }
 
+
 .welcome-message p {
   font-size: 1.2em;
-  overflow: hidden; /* Hide overflow */
-  border-right: .15em solid #daaf23; 
-  animation: 
-  typing 3.5s steps(20, end),
-  blink-caret .75s step-end infinite;
-
+  white-space: nowrap; /* Prevent line break */
+  overflow: hidden; /* Hide text until it appears */
+  border-right: .15em solid #daaf23; /* Blinking cursor */
+  width: 0; /* Start with no text */
+  animation: typing 3.5s steps(20, end) forwards, blink-caret 0.75s step-end infinite;
 }
 
 /* The typing effect */
 @keyframes typing {
-  from { width: 0 }
+  from { width: 50% }
   to { width: 100% }
 }
 
@@ -66,6 +66,83 @@ a {
   50% { border-color: #daaf23; }
 }
 
+/*------------------------------------------------------------*/
+.intro-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  flex-wrap: wrap;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.intro-image img {
+  width: 320px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  animation: fadeInImage 1.5s forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeInImage {
+  to {
+    opacity: 1;
+  }
+}
+
+.intro-text {
+  max-width: 600px;
+  color: #e0e0e0;
+  text-align: left;
+}
+
+.intro-text h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.glow-text {
+  background: linear-gradient(to right, #ff3f02, #daaf23);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  animation: shimmer 7.5s infinite linear;
+}
+
+.glow-text {
+  background-size: 200% auto;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+.intro-text p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+/*------------------------------------------------------------*/
 
 .grid-container {
   display: grid;
@@ -84,6 +161,7 @@ a {
 }
 
 .box {
+  position: relative;
   height: 200px;
   border-radius: 15px;
   border: 2px solid #daaf23;
@@ -97,14 +175,26 @@ a {
   transition: all 0.3s ease;
   overflow: hidden;
   padding: 15px;
-  box-sizing: border-box; /* Include padding in width calculation */
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.05); /* subtle base bg */
 }
 
-.box h2 {
-  font-size: 2rem;
-  margin: 0;
-  transition: all 0.3s ease;
-  z-index: 2;
+.box-desc {
+  font-size: 0.9rem;
+  opacity: 0;
+  color: #fff;
+  margin-top: 10px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(10px);
+}
+
+.box:hover .box-desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.box:hover h2 {
+  transform: translateY(-6px);
 }
 
 .box:hover {
@@ -112,7 +202,7 @@ a {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
   cursor: pointer;
   background: linear-gradient(#ff3f02, #daaf23);
-  border: #ff3f02;
+  border-color: #ff3f02;
 }
 
 .box:hover h2 {
@@ -137,4 +227,77 @@ a {
     width: 90%; /* Full width on small screens */
     height: 150px;
   }
+}
+
+.box-icon {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.box:hover .box-icon {
+  transform: scale(1.1);
+}
+
+/*------------------------------------------------------------*/
+
+.banner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 0 20px;
+}
+
+.banner-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 25px 30px;
+  color: #f2f2f2;
+  text-align: left;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.banner-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.banner-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.4rem;
+  color: #ffcc00;
+}
+
+.banner-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #e0e0e0;
+}
+
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.banner-card:hover .card-icon {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.banner-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 20px #ff3f02, 0 0 40px #daaf23;
+  border-color: #ff3f02;
 }
