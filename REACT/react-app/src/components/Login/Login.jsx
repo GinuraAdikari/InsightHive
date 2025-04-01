@@ -25,7 +25,7 @@ const Login = () => {
         if (error) {
             setError(error.message);
         } else {
-            navigate('/home'); // Redirect to the account page after login
+            navigate('/'); // Redirect to the account page after login
         }
     };
 
