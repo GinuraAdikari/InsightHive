@@ -25,6 +25,17 @@ import {MdTimeline} from "react-icons/md";
 import {IoMdOptions} from "react-icons/io";
 import {BiHappy} from "react-icons/bi";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faChartColumn,
+  faCompass,
+  faTriangleExclamation,
+  faClock,
+  faDollarSign,
+  faFileLines,
+} from '@fortawesome/free-solid-svg-icons';
+
+
 const Home = () => {
     const [user, setUser] = useState(null);
     const [popupMessage, setPopupMessage] = useState("");
@@ -67,7 +78,7 @@ const Home = () => {
 
             <div className="intro-banner" data-aos="fade-up">
                 <div className="intro-image" data-aos="fade-right">
-                    <img src="../home.jpg" alt="Insight Hive team" />
+                 {/*   <img src="../home.jpg" alt="Insight Hive team" /> */}
                 </div>
                 <div className="intro-text">
                     <h2>We are <span className="glow-text">InsightHive</span></h2>
@@ -107,32 +118,32 @@ const Home = () => {
 
             <div className="banner-grid">
                 <div className="banner-card">
-                    <div className="card-icon">📊</div>
+                <div className="card-icon"><FontAwesomeIcon icon={faChartColumn} /></div>
                     <h3>Behavioral Patterns</h3>
                     <p>Discover how users interact with your platform and identify usage trends.</p>
                 </div>
                 <div className="banner-card">
-                    <div className="card-icon">🧭</div>
+                <div className="card-icon"><FontAwesomeIcon icon={faCompass} /></div>
                     <h3>Customer Journey Mapping</h3>
                     <p>Track the full customer lifecycle—from acquisition to retention.</p>
                 </div>
                 <div className="banner-card">
-                    <div className="card-icon">⚠️</div>
+                <div className="card-icon"><FontAwesomeIcon icon={faTriangleExclamation} /></div>
                     <h3>Churn Prediction</h3>
                     <p>Detect signals of customer drop-off and act early to prevent it.</p>
                 </div>
                 <div className="banner-card">
-                    <div className="card-icon">⏱️</div>
+                <div className="card-icon"><FontAwesomeIcon icon={faClock} /></div>
                     <h3>Real-Time Feedback</h3>
                     <p>Access real-time sentiment analysis to understand user satisfaction instantly.</p>
                 </div>
                 <div className="banner-card">
-                    <div className="card-icon">💰</div>
+                <div className="card-icon"><FontAwesomeIcon icon={faDollarSign} /></div>
                     <h3>Sales Optimization</h3>
                     <p>Identify top-performing segments and tailor offers to boost conversions.</p>
                 </div>
                 <div className="banner-card">
-                    <div className="card-icon">📑</div>
+                <div className="card-icon"><FontAwesomeIcon icon={faFileLines} /></div>
                     <h3>Custom Reports</h3>
                     <p>Generate tailored insights for teams, clients, or internal strategy.</p>
                 </div>

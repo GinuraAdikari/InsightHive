@@ -30,16 +30,16 @@
   .componentCard {
     background-color: #111;
     border-radius: 12px;
+    border: 1px solid #daaf23;
     padding: 1.5rem;
     width: 260px;
-    box-shadow: 0 0 10px rgba(255, 105, 135, 0.3);
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
   }
   
   .componentCard:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 18px rgba(255, 105, 135, 0.6);
+    box-shadow: 0 0 10px  #daaf23;
   }
   
   .componentCard h3 {

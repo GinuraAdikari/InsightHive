@@ -17,3 +17,15 @@
     font-size: 1.2rem;
     line-height: 1.6;
 }
+
+.probability-banner {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #f0f8ff;
+    border-left: 6px solid #007acc;
+    font-size: 18px;
+    color: #003f63;
+    border-radius: 8px;
+    width: fit-content;
+  }
+  

@@ -64,7 +64,7 @@
 
 .feature-box:hover {
   transform: translateY(-6px);
-  box-shadow: 0 0 20px #ff3f02, 0 0 40px #daaf23;
+  box-shadow: 0 0 10px #ff3f02, 0 0 10px #daaf23;
 }
 
 .feature-icon {

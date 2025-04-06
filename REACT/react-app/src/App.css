@@ -44,7 +44,6 @@ a {
   font-size: 2.5rem;
 }
 
-
 .welcome-message p {
   font-size: 1.2em;
   white-space: nowrap; /* Prevent line break */
@@ -72,20 +71,22 @@ a {
   justify-content: center;
   align-items: center;
   gap: 40px;
+  flex-wrap: wrap;
   max-width: 1200px;
   margin: 4rem auto;
   padding: 40px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.08);
+  background:linear-gradient(rgba(0, 0, 0, 0.657), rgba(0, 0, 0, 0.546)),  url('F:\finale\InsightHive\REACT\react-app\public\home.jpg') center/cover no-repeat;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-  flex-wrap: wrap;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 0;
 }
 
 .intro-image img {
-  width: 320px;
+  width: 120px;
   height: auto;
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
@@ -201,8 +202,7 @@ a {
   transform: scale(1.05);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
   cursor: pointer;
-  background: linear-gradient(#ff3f02, #daaf23);
-  border-color: #ff3f02;
+  background: linear-gradient(#ff3d02dd, #daaf23d8);
 }
 
 .box:hover h2 {
@@ -298,6 +298,6 @@ a {
 .banner-card:hover {
   transform: translateY(-6px);
   background: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 0 20px #ff3f02, 0 0 40px #daaf23;
-  border-color: #ff3f02;
+  box-shadow: 0 0 10px #726a6a, 0 0 10px #b67a1f;
+  border-color: #535050;
 }

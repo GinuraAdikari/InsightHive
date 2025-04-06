@@ -9,6 +9,7 @@ from nltk.sentiment import SentimentIntensityAnalyzer
 import re
 import nltk
 from nltk.corpus import stopwords
+nltk.download('vader_lexicon')
 nltk.download('stopwords')
 
 stop_words = set(stopwords.words("english"))

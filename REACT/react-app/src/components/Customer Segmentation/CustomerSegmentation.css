@@ -1,196 +1,764 @@
+/* Base Styles */
+:root {
+    --dark-bg: #1a1a1a;
+    --darker-bg: #121212;
+    --text-color: #f0f0f0;
+    --text-muted: #b0b0b0;
+    --primary-accent: #45B7D1;
+    --secondary-accent: #4ECDC4;
+    --tertiary-accent: #4ECDC4;
+    --card-bg: #2a2a2a;
+    --card-border: #3a3a3a;
+    --download-btn: #4CAF50;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+}
+
 /* Background styling */
 .segmentation-background {
-    background: linear-gradient(#546FDB, #BE6FBC);
-    padding: 20px;
+    background: linear-gradient(135deg, var(--darker-bg), var(--dark-bg));
     min-height: 100vh;
+    padding-top: 6.5rem;
+    padding-bottom: 2rem;
 }
 
-/* Container for the heading and intro paragraph */
-.segmentation-container {
-    padding: 25px;
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
+    padding: 4rem 2rem;
     text-align: center;
-    color: white;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 35px;
-    margin: 15px auto;
-    max-width: 800px;
-}
-
-.segmentation-container h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-.segmentation-container p {
-    font-size: 1.2rem;
-    line-height: 1.5;
-}
-
-/* Container for the data details */
-.data-container {
-    padding: 20px;
-    color: white;
-    max-width: 1200px;
-    margin: 20px auto;
-}
-
-.data-container h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-.data-container p {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-/* Table Styling */
-.data-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+    position: relative;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
 }
 
-.data-table th,
-.data-table td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.data-table th {
-    background-color: rgba(0, 0, 0, 0.5);
-    font-size: 1.2rem;
-    color: #ffcc00;
-}
-
-.data-table td {
-    font-size: 1rem;
-    color: #ddd;
-}
-
-.data-table tr:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-/* Container for the plots/graphs */
-.plots-container {
-    padding: 20px;
-    color: white;
+.hero-content {
     max-width: 1200px;
-    margin: 20px auto;
-}
-
-.plots-container h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-/* Individual plot item */
-.plot-item {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.plot-item h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: #ffcc00;
-}
-
-.plot-item img {
-    width: 100%;
-    max-width: 800px;
-    height: auto;
-    border-radius: 10px;
-    display: block;
     margin: 0 auto;
 }
 
-/* Container for the clusters */
-.clusters-container {
-    padding: 20px;
-    color: white;
+.hero-section h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    background: linear-gradient(to right, #ff3f02, #daaf23);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--text-muted);
+}
+
+/* Main Container */
+.main-container {
     max-width: 1200px;
-    margin: 20px auto;
+    margin: 0 auto;
+    padding: 0 1.5rem;
 }
 
-.clusters-container h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    text-align: left;
+.section-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--card-border);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Cluster buttons layout */
-.cluster-buttons {
+.section-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, #ff3f02, #daaf23);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.section-card h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, #ff3f02, #daaf23);
+}
+
+/* Search Container */
+.search-container {
+    margin-bottom: 1.5rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background: #333;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search-input::placeholder {
+    color: #888;
+}
+
+.search-input:focus {
+    background: #3a3a3a;
+    border-color: #ff3f02;
+    box-shadow: 0 0 0 2px rgba(255, 63, 2, 0.3);
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.feature-card {
+    background: #333;
+    padding: 1.2rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-left: 4px solid transparent;
+    min-height: 100px;
     display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-/* Cluster button styling */
-.cluster-button {
-    background-color: #ffcc00;
-    color: #000;
+.feature-card:hover {
+    background: #3a3a3a;
+    transform: translateY(-3px);
+}
+
+.feature-card.active {
+    border-left: 4px solid #ff3f02;
+    background: #3a3a3a;
+}
+
+.feature-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.feature-description {
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid #444;
+}
+
+.feature-description p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* Plots Grid */
+.plots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.plot-card {
+    background: #333;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.plot-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.plot-image-container {
+    width: 300px;
+    height: 200px;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #222;
+}
+
+.plot-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.plot-card:hover .plot-image {
+    transform: scale(1.05);
+}
+
+.plot-footer {
+    padding: 1rem;
+    text-align: center;
+}
+
+.plot-footer h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-color);
+}
+
+.plot-action-btn {
+    width: 100%;
+    padding: 0.6rem;
+    background: #ff3f02;
+    color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.plot-action-btn:hover {
+    background: #e63900;
+}
+
+/* Cluster Charts */
+.cluster-charts-container {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.cluster-chart {
+    flex: 1;
+    min-width: 300px;
+    background: #333;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.cluster-chart:hover {
+    transform: translateY(-5px);
+}
+
+.cluster-chart h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #f0f0f0;
+    font-size: 1.2rem;
+}
+
+.chart-wrapper {
+    position: relative;
+    height: 375px;
+    width: 100%;
+}
+
+.chart-wrapper canvas {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.cluster-count-summary {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+}
+
+.cluster-count-summary p {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Custom Legend Styles */
+.custom-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+.color-box {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    border: 2px solid #2a2a2a;
+}
+
+.legend-label {
+    font-weight: 500;
+    color: #f0f0f0;
+}
+
+.legend-value {
+    font-weight: bold;
+    color: #ff3f02;
+}
+
+/* Chart Tooltip Styles */
+.chartjs-tooltip {
+    opacity: 1 !important;
+    position: absolute !important;
+    background: rgba(0, 0, 0, 0.9) !important;
+    border: 1px solid #444 !important;
+    border-radius: 6px !important;
+    padding: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    color: #f0f0f0 !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    pointer-events: none !important;
+    transition: all 0.1s ease !important;
+    z-index: 1000 !important;
+}
+
+.chartjs-tooltip-body {
+    font-size: 14px !important;
+    font-weight: bold !important;
+    line-height: 1.4 !important;
+    text-align: center !important;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    border-radius: 10px;
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #444;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    font-size: 1.5rem;
+    background: linear-gradient(to right, #ff3f02, #daaf23);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 0.5rem;
+}
+
+.modal-close:hover {
+    color: var(--text-color);
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    margin-bottom: 1.5rem;
+    background: #222;
+    border-radius: 6px;
+}
+
+.plot-summary h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: #ff3f02;
+}
+
+.plot-summary p {
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+/* Cluster Table */
+.table-container {
+    overflow-x: auto;
+}
+
+.cluster-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.cluster-table th,
+.cluster-table td {
+    padding: 0.8rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #444;
+}
+
+.cluster-table th {
+    background: #333;
+    color: #ff3f02;
+    font-weight: 600;
+}
+
+.cluster-table tr:hover {
+    background: #3a3a3a;
+}
+
+.cluster-table td {
+    color: var(--text-muted);
+}
+
+/* Cluster Tabs */
+.cluster-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.cluster-tab {
+    padding: 1rem 2.5rem 1rem 1.5rem;
+    background: #333;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: var(--text-color);
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 6px 6px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    position: relative;
+}
+
+.cluster-tab:hover {
+    background: #3a3a3a;
+}
+
+.cluster-tab.active {
+    background: #3a3a3a;
+    font-weight: bold;
+    border-bottom-color: currentColor;
+}
+
+.cluster-icon {
+    font-size: 1.2rem;
+}
+
+.cluster-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.cluster-id-tab {
+    position: absolute;
+    right: 1rem;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: var(--text-color);
+}
+
+/* Cluster Details */
+.cluster-details {
+    background: #333;
+    border-radius: 0 0 8px 8px;
+    padding: 1.5rem;
+}
+
+.cluster-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.cluster-header h3 {
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--text-color);
+}
+
+.cluster-icon-large {
+    font-size: 1.6rem;
+}
+
+.cluster-id {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.cluster-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.info-card {
+    background: #3a3a3a;
+    padding: 1.2rem;
+    border-radius: 8px;
+}
+
+.info-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #ff3f02;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.info-card h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: #ff3f02;
+}
+
+.info-card ul {
+    list-style-type: none;
+}
+
+.info-card ul li {
+    margin-bottom: 0.8rem;
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+.info-card ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #ff3f02;
+    font-size: 1.2rem;
+}
+
+.strategy-card {
+    grid-column: 1 / -1;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.strategy-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Download Section */
+.download-section {
+    background: linear-gradient(135deg, #2a2a2a, #1f1f1f);
+    border: 1px solid #444;
+}
+
+.download-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.download-text h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #ff3f02, #daaf23);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.download-text p {
+    color: var(--text-muted);
+    max-width: 600px;
+}
+
+.download-btn {
+    padding: 0.8rem 1.5rem;
+    background: var(--download-btn) !important;
+    color: white;
+    border: none;
+    border-radius: 6px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
 }
 
-.cluster-button:hover {
-    background-color: #e6b800;
+.download-btn:hover {
+    background: #3e8e41 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.cluster-button.active {
-    background-color: #e6b800;
-    font-weight: bold;
+.download-icon {
+    font-size: 1.2rem;
 }
 
-/* Cluster details styling */
-.cluster-details {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 20px;
-    margin-top: 20px;
+/* Responsive Design */
+@media (max-width: 900px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.cluster-details h3 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    color: #ffcc00;
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-section {
+        padding: 3rem 1rem;
+    }
+
+    .section-card {
+        padding: 1.5rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .plot-image-container {
+        width: 250px;
+        height: 250px;
+    }
+
+    .cluster-tabs {
+        flex-direction: column;
+    }
+
+    .cluster-tab {
+        border-radius: 6px;
+        border-bottom: none;
+        border-left: 3px solid transparent;
+        padding: 0.8rem 2rem 0.8rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    .cluster-tab.active {
+        border-left: 3px solid currentColor;
+        border-bottom: none;
+    }
+
+    .cluster-name {
+        font-size: 0.95rem;
+    }
+
+    .cluster-id-tab {
+        font-size: 1.1rem;
+    }
+
+    .download-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .download-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .cluster-charts-container {
+        flex-direction: column;
+    }
 }
 
-.cluster-details h4 {
-    font-size: 1.3rem;
-    margin: 15px 0 10px;
-    color: #ffcc00;
-}
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 1.8rem;
+    }
 
-.cluster-details ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin-bottom: 15px;
-}
+    .section-card {
+        padding: 1.2rem;
+    }
 
-.cluster-details ul li {
-    font-size: 1rem;
-    margin-bottom: 5px;
-}
+    .section-card h2 {
+        font-size: 1.5rem;
+    }
 
-.cluster-details p {
-    font-size: 1rem;
-    margin-bottom: 15px;
-}
+    .plot-image-container {
+        width: 200px;
+        height: 200px;
+    }
 
+    .modal-body {
+        padding: 1rem;
+    }
+
+    .modal-header {
+        padding: 1rem;
+    }
+}
