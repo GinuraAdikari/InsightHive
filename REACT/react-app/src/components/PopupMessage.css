@@ -18,16 +18,18 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
     max-width: 300px;
+    width: 100%;
+    border-style: solid;
 }
 
 .popup-box p {
     font-size: 16px;
     margin-bottom: 10px;
-    color: #6a0dad;
+    color: #000;
 }
 
 .popup-box button {
-    background: #6a0dad; /* Purple color */
+    background: linear-gradient(135deg, #ff3f02, #daaf23);
     color: white;
     border: none;
     padding: 8px 16px;
@@ -36,5 +38,5 @@
 }
 
 .popup-box button:hover {
-    background: #5700a3;
+    background: linear-gradient(135deg, #daaf23, #ff3f02);
 }
