@@ -62,13 +62,15 @@ const EngagementForm = ({ formData, handleChange, handleSubmit }) => {
       <label>
         What is your budget?
         <input
-          type='number'
+          type='range'
           name='budget'
+          min='0'
+          max='9999'
           value={formData.budget}
           onChange={handleChange}
-          placeholder='Enter budget'
-          className='animated-input'
+          className='budget-slider'
         />
+        <span className="budget-value">${Number(formData.budget).toLocaleString()}</span>
       </label>
       <CheckboxInput 
         name="isAvailable" 

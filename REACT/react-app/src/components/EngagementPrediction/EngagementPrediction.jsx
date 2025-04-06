@@ -4,6 +4,8 @@ import OutputSection from "./OutputSection";
 import ErrorMessage from "./ErrorMessage";
 import PreviousCampaign from "./PreviousCampaign"; // Import the new component
 import "./styles/EngagementPrediction.css";
+import PopupMessage from '../PopupMessage';
+
 
 
 const EngagementPrediction = () => {
@@ -45,12 +47,25 @@ const EngagementPrediction = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.platform || !formData.channel || !formData.advertiser ||
-       !formData.keywords || !formData.search_tags || !formData.duration ||
-        !formData.region || !formData.budget) {
+    if (
+      !formData.platform ||
+      !formData.channel ||
+      !formData.advertiser ||
+      !formData.keywords ||
+      !formData.search_tags ||
+      !formData.duration ||
+      !formData.region ||
+      formData.budget === ""
+    ) {
       setErrorMessage("Please fill all the fields.");
       return;
     }
+    
+    if (Number(formData.budget) === 0) {
+      setErrorMessage("Budget cannot be zero.");
+      return;
+    }
+    
 
     setErrorMessage("");
 
@@ -93,6 +108,10 @@ const EngagementPrediction = () => {
     }
   };
 
+  const handleClosePopup = () => {
+    setErrorMessage(""); // Closes the popup
+  };
+
     // Function to save data as a text file
     const handleSave = () => {
       const dataToSave = `
@@ -121,20 +140,26 @@ const EngagementPrediction = () => {
     <>
     <div className="engagement-container">
       <h1 className="engagement-title">Customer Engagement <span>Prediction</span> </h1>
-      <p className="engagement-description">
-        Predict your future customer engagement level for the advertisement you are about to post!
-      </p>
+      <div className="engagement-description fade-in">
+        <p>Predict your future customer engagement level for the advertisement you are about to post!.
+          <p>In this component, you can enter the details of your Product Campaign and get a prediction of the engagement level.
+          The prediction is based on the data you provide, including the platform, channel type, region, keywords, and more.
+          </p>
+        </p>
+      </div>
       <div className="previous-campaign-wrapper">
         <PreviousCampaign previousCampaign={previousCampaign} />
       </div>
       <div className="form-title">
-          <p>Predict Your Engagement</p>
+          <p>Predict Your Engagement <span>Score</span></p>
       </div> 
 
       <div className="form-output-wrapper">
         <div className="input-section">
         <EngagementForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
-          {errorMessage && <ErrorMessage message={errorMessage} />}
+        {errorMessage && (
+          <PopupMessage message={errorMessage} onClose={handleClosePopup} />
+        )}
         </div>
         <div className="output-section">
           <OutputSection responseMessage={responseMessage} onSave={handleSave} />

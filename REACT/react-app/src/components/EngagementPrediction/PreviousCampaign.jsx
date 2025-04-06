@@ -37,7 +37,7 @@ const PreviousCampaign = () => {
     if (selectedCampaign.length > 0) {
       const sortedEngagements = selectedCampaign
         .map((c) => ({
-          time: c.time,
+          time: new Date(c.time).toISOString().split('T')[0], // Format as YYYY-MM-DD
           engagement_percentage: c.engagement_percentage,
         }))
         .sort((a, b) => new Date(a.time) - new Date(b.time)); // Sort by time
@@ -87,7 +87,7 @@ const PreviousCampaign = () => {
   };
 
   return (
-    <div className="previous-campaign-container">
+    <div className="previous-campaign-container fade-in">
       <h2> Analyse Previous Campaigns Engagements</h2>
 
       <div className="dropdown-container">
