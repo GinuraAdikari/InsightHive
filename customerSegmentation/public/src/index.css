@@ -1,0 +1,16 @@
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure the app takes full height */
+html, body, #root {
+  height: 100%;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
