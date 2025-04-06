@@ -55,31 +55,6 @@ const AboutUs = () => {
         </div>
       </section>
 
-      <section className="about-team">
-        <h2>Meet the Team</h2>
-        <div className="team-grid">
-          <div className="team-card">
-            <img src="../member2.jpg" alt="Member 2" />
-            <h4>Ginura</h4>
-            <p>Frontend & UI/UX Developer</p>
-          </div>
-          <div className="team-card">
-            <img src="../member3.jpg" alt="Member 3" />
-            <h4>Appu</h4>
-            <p>Frontend & UI/UX Developer</p>
-          </div>
-          <div className="team-card">
-            <img src="../member4.jpg" alt="Member 4" />
-            <h4>Anuradha</h4>
-            <p>Frontend & UI/UX Developer</p>
-          </div>
-          <div className="team-card">
-            <img src="../member1.jpg" alt="Amanda" />
-            <h4>Dhanuji</h4>
-            <p>Frontend & UI/UX Developer</p>
-          </div>
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="about-footer">
